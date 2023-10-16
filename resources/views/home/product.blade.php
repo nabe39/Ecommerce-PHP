@@ -36,9 +36,9 @@
                    <img class="rounded mx-auto d-block" src="product/{{$products->image}}" alt="">
                 </div>
                 <div class="detail-box">
-                   <h4>
+                   <h5>
                       {{$products->title}}
-                   </h4>
+                   </h5>
                    @if($products->discount_price !=null)
                      <h6 style="color:red">
                         Discount price <br>
