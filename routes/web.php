@@ -15,7 +15,7 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', [HomeController::class,'index']);
+Route::get('/', [HomeController::class,'index'])->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -26,6 +26,14 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('login',[HomeController::class,'login']);
+Route::post('login',[HomeController::class,'authLogin'])->name('login');
+
+Route::get('register',[HomeController::class,'register']);
+Route::post('register',[HomeController::class,'createRegister'])->name('register');
+
+
 Route::get('/redirect',[HomeController::class,'redirect']);
 
 Route::get('/view_category',[AdminController::class,'view_category']);

@@ -23,7 +23,59 @@ class HomeController extends Controller
             $product=Product::paginate(6);
             return view('home.userpage',compact('product'));
         }
+    }
 
+    public function login(){
+        return view('home.login');
+    }
+    public function authLogin(Request $request){
+        $data=$request;
+        if(auth()->attempt([
+            'email'=>$data['email'],
+            'password'=>$data['password']
+        ])){
+            $product=Product::paginate(6);
+            $request->session()->regenerate();
+            $usertype=Auth::user()->usertype;
+            if($usertype == '1'){
+                return view('admin.home');
+            }else{
+                $product=Product::paginate(6);
+                return view('home.userpage',compact('product'));
+            }
+        }else{
+
+            return view('home.login');
+        }
+       
+    }
+
+    public function register(){
+        return view('home.register');
+    }
+    public function createRegister(Request $request){
+        $product=Product::paginate(6);
+        $data=$request;
+        // dd($data);
+        // if($data['password']==$data['password_confirmation']){
+        // }
+        // $user = User::create($data);
+        // auth()->login($user);
+        // return view('home.userpage',compact('product'));
+        // return redirect()->back();
+        if($data['password']==$data['password_confirmation']){
+            $user = new User;
+            $user->name = $data->name;
+            $user->email = $data->email;
+            $user->phone = $data->phone;
+            $user->address = $data->address;
+
+            $user->password =bcrypt($data->password);
+            $user->save();
+            return redirect('login');
+        }
+       
+       return redirect()->back();
     }
     public function product_details($id){
         $product=Product::find($id);
@@ -58,7 +110,7 @@ class HomeController extends Controller
             return redirect()->back();
         }
         else{
-            return redirect('/login');
+            return redirect('login');
         }
         // $product = Product::find($id);
     }
@@ -68,9 +120,7 @@ class HomeController extends Controller
             $cart=Cart::where('user_id','=',$id)->get();
             return view('home.showcart',compact('cart'));
         }
-        else{
-            return redirect('login');
-        }
+            return redirect()->back()->with('message','Failed to login');
     }
     public function remove_cart($id){
         $cart=Cart::find($id);
