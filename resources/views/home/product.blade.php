@@ -8,7 +8,7 @@
        <div class="row">
          @foreach ($product as $products)
           <div class="col-sm-6 col-md-4 col-lg-4">
-             <div class="box" style="">
+             <div class="box " style="">
                 <div class="option_container">
                    <div class="options">
                       <a href="{{url('product_details',$products->id)}}" class="option1">
@@ -40,7 +40,7 @@
                       {{$products->title}}
                    </h5>
                    @if($products->discount_price !=null)
-                     <h6 style="color:red">
+                     <h6 style="color:red;padding: 0 10px;">
                         Discount price <br>
                         {{$products->discount_price}}$
                      </h6>
