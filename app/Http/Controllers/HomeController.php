@@ -41,11 +41,10 @@ class HomeController extends Controller
                 return view('admin.home');
             }else{
                 $product=Product::paginate(6);
-                return view('home.userpage',compact('product'));
+                return redirect(route('home'));
             }
         }else{
-
-            return view('home.login');
+            return redirect()->back();
         }
        
     }

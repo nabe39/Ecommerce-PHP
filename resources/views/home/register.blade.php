@@ -41,7 +41,7 @@
                                             @endif
                                          <div class="row form-footer">
                                              <div class="col-md-6 forget-paswd">
-                                                 <a href="">Already have account ?</a>    
+                                                 <a href="{{url('login')}}">Already have account ?</a>    
                                              </div>
                                              <div class="col-md-6 button-div">
                                                  <button class="btn btn-primary">Register</button>
