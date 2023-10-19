@@ -119,7 +119,7 @@ class HomeController extends Controller
             $cart=Cart::where('user_id','=',$id)->get();
             return view('home.showcart',compact('cart'));
         }
-            return redirect()->back()->with('message','Failed to login');
+            return redirect(route('login'));
     }
     public function remove_cart($id){
         $cart=Cart::find($id);
