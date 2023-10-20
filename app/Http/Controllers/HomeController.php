@@ -117,7 +117,7 @@ class HomeController extends Controller
         if(Auth::id()){
             $id=Auth::user()->id;
             $cart=Cart::where('user_id','=',$id)->get();
-            return view('home.showcart',compact('cart'));
+            return view('home.showcart-1',compact('cart'));
         }
             return redirect(route('login'));
     }
