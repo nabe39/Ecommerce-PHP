@@ -50,7 +50,9 @@
                         @foreach($cart as $cart)
                         <hr class="my-4">
                         <div class="row mb-4 d-flex justify-content-between align-items-center">
+                          <input class="test" type="checkbox" value="{{$cart->id}}"></input>
                           <div class="col-md-2 col-lg-2 col-xl-2">
+                            
                             <img
                             src="/product/{{$cart->image}}"
                               class="img-fluid rounded-3" alt="Cotton T-shirt">
@@ -77,7 +79,7 @@
                         <div class="pt-5">
                             <form action="{{url('/')}}" method="get">
                                 <h6 class="mb-0"><a href="{{url('/')}}" class="text-body"><i
-                                    class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a>
+                                    class="fas fa-long-arrow-alt-left me-2"></i> Back to shop</a>
                                 </h6>
                             </form>
                             </div>
@@ -86,6 +88,7 @@
                     <div class="col-lg-4 bg-grey">
                       <div class="p-5">
                         <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                        <span style="font-family: 'Montserrat', sans-serif" class="fw-bold mb-0 ">{{$totalquantity}} iteams</span>
                         <hr class="my-4">
       
                         {{-- <div class="d-flex justify-content-between mb-4">
@@ -143,5 +146,21 @@
        <script src="home/js/bootstrap.js"></script>
        <!-- custom js -->
        <script src="home/js/custom.js"></script>
+
+       <script>
+        let test = document.querySelectorAll(".test");
+        test.forEach(element => {
+          element.addEventListener("change", function() {
+    // Kiểm tra trạng thái của checkbox
+    if (element.checked) {
+        console.log("Checkbox đã được chọn");
+        // Thực hiện các hành động khác khi checkbox được chọn
+    } else {
+        console.log("Checkbox đã được bỏ chọn");
+        // Thực hiện các hành động khác khi checkbox bị bỏ chọn
+    }
+});
+        });
+    </script>
 </body>
 </html>

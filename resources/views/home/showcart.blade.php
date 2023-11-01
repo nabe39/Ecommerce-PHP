@@ -29,20 +29,27 @@
             padding-top: 30px
         }
         table,th,td{
-            border:1px solid black;
+            
         }
         .th_deg{
             font-size: 30px;
-            padding: 5px;
-            background: skyblue;
+            /* padding: 5px; */
+            /* background: skyblue; */
         }
         .img_deg{
             height: 200px;
             widows: 200px;
         }
         .total_deg{
-            margin: 20px;
+            /* margin: 20px; */
             font-size: 20px;
+            font-weight: 600;
+        }
+        .cashbtn{
+            width: 50%;
+            margin-right: 10px;
+            height: 50px;
+            text-align: center;
         }
       </style>
    </head>
@@ -51,40 +58,46 @@
          <!-- header section strats -->
             @include('home.header')
          <!-- end header section -->
-      <div class="center">
+      <div class="container">
         @if (session()->has('message'))
         <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
         {{session()->get('message')}}
         </div>
         @endif
-        <table>
-            <tr>
-                <th class="th_deg">Product title</th>
-                <th class="th_deg">product quantity</th>
-                <th class="th_deg">price</th>
-                <th class="th_deg">Image</th>
-                <th class="th_deg">Action</th>
-            </tr>
-            <?php $totalprice=0; ?>
-            @foreach ($cart as $cart)
-                <tr>
-                    <td>{{$cart->product_title}}</td>
-                    <td>{{$cart->quantity}}</td>
-                    <td>{{$cart->price}}$</td>
-                    <td><img class="img_deg" src="/product/{{$cart->image}}" alt=""></td>
-                    <td><a onclick="return confirm('Are you sure to remove this product')" class="btn btn-danger" href="{{url('remove_cart',$cart->id)}}">Remove product</a></td>
-                </tr>
-                <?php $totalprice=$totalprice + $cart->price; ?>
-            @endforeach           
-        </table>
-        <div>
-            <h1 class="total_deg">Total price: {{$totalprice}}$</h1>
+        <div class="table-responsive">
+            <table class="table ">
+                <thead class="table-primary">
+                    <tr>
+                        <th class="th_deg">Product title</th>
+                        <th class="th_deg">product quantity</th>
+                        <th class="th_deg">price</th>
+                        <th class="th_deg">Image</th>
+                        <th class="th_deg">Action</th>
+                    </tr>
+                </thead>
+                <?php $totalprice=0; ?>
+                @foreach ($cart as $cart)
+                <tbody class="table-group-divider ">
+                    <tr class="">
+                        <td>{{$cart->product_title}}</td>
+                        <td>{{$cart->quantity}}</td>
+                        <td>{{$cart->price}}$</td>
+                        <td><img class="img_deg" src="/product/{{$cart->image}}" alt=""></td>
+                        <td><a onclick="return confirm('Are you sure to remove this product')" class="btn btn-danger" href="{{url('remove_cart',$cart->id)}}">Remove product</a></td>
+                    </tr>
+                </tbody>
+                    <?php $totalprice=$totalprice + $cart->price; ?>
+                @endforeach           
+            </table>
         </div>
         <div>
-            <h1 class="lead">Proceed to Order</h1>
-            <a href="{{url('cash_order')}}" class="btn btn-danger">Cash on delivery</a>
-            <a href="" class="btn btn-primary">Pay using card</a>
+            <label class="total_deg label p-2">Total price: {{$totalprice}}$</label>
+        </div>
+        <div class="d-flex" style="">
+            <label class="label p-2">Proceed to Order</label>
+            <a href="{{url('cash_order')}}" class="btn btn-outline-danger col cashbtn me-3">Cash on delivery</a>
+            <a href="" class="btn btn-outline-primary col gx-4 cashbtn">Pay using card</a>
 
         </div>
       </div>

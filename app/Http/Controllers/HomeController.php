@@ -13,6 +13,7 @@ class HomeController extends Controller
 {
     public function index(){
         $product=Product::paginate(6);
+        
         return view('home.userpage',compact('product'));
     }
     public function redirect(){
@@ -30,23 +31,35 @@ class HomeController extends Controller
     }
     public function authLogin(Request $request){
         $data=$request;
+        // dd($data);
         if(auth()->attempt([
             'email'=>$data['email'],
             'password'=>$data['password']
         ])){
-            $product=Product::paginate(6);
+           
             $request->session()->regenerate();
             $usertype=Auth::user()->usertype;
             if($usertype == '1'){
                 return view('admin.home');
             }else{
                 $product=Product::paginate(6);
+                $user = User::where('email',$data['email'])->first();
+                // $cart=Cart::where('user_id',$user->id)->count();
+                session(['name' => $user->name]);
+                // session(['cart' => $cart]);
+                $cart=Cart::where('user_id',$user->id)->count();
+                session(['cart' => $cart]);
                 return redirect(route('home'));
             }
         }else{
             return redirect()->back();
         }
        
+    }
+    public static function countt ($id){
+        $cart=Cart::where('user_id',$id)->count();
+        session(['cart' => $cart]);
+        dd($cart);
     }
 
     public function register(){
@@ -55,13 +68,6 @@ class HomeController extends Controller
     public function createRegister(Request $request){
         $product=Product::paginate(6);
         $data=$request;
-        // dd($data);
-        // if($data['password']==$data['password_confirmation']){
-        // }
-        // $user = User::create($data);
-        // auth()->login($user);
-        // return view('home.userpage',compact('product'));
-        // return redirect()->back();
         if($data['password']==$data['password_confirmation']){
             $user = new User;
             $user->name = $data->name;
@@ -76,9 +82,13 @@ class HomeController extends Controller
        
        return redirect()->back();
     }
-    public function product_details($id){
-        $product=Product::find($id);
-        return view('home.product_details',compact('product'));
+    public function product_details(Request $request){
+        $id=$request->id;
+        $product=Product::where('id',$id)->first();
+        $category= $product->category;
+        $request->session()->put('product',$product);
+        $related = Product::where('category',$category)->get();
+        return view('home.product_details-1',compact('related'));
     }
     public function add_cart(Request $request, $id){
         if(Auth::id()){
@@ -105,13 +115,14 @@ class HomeController extends Controller
 
             $cart->quantity=$request->quantity; //input values from input
             $cart->save();
+            $cart=Cart::where('user_id',$user->id)->count();
+            session(['cart' => $cart]);
             // dd($user); send request attribute
-            return redirect()->back();
+            return redirect()->back()->with('message','Add cart successfully!');
         }
         else{
             return redirect('login');
         }
-        // $product = Product::find($id);
     }
     public function show_cart(){
         if(Auth::id()){
@@ -124,12 +135,22 @@ class HomeController extends Controller
     public function remove_cart($id){
         $cart=Cart::find($id);
         $cart->delete();
+        $userid=Auth::user()->id;
+        $cart=Cart::where('user_id',$userid)->count();
+        session(['cart' => $cart]);
         return redirect()->back();
     }
     public function cash_order(){
         $user=Auth::user();
         $userid=$user->id;
         $data = Cart::where('user_id','=',$userid)->get();
+        // dd($data);
+        $productIds = []; // Initialize an array to store product IDs
+   
+        foreach ($data as $cartItem) {
+            $productIds[] = $cartItem->Product_id;
+        }
+        
         foreach($data as $data){
             $order=new Order;
             $order->name=$data->name;
@@ -137,7 +158,7 @@ class HomeController extends Controller
             $order->phone=$data->phone;
             $order->address=$data->address;
             $order->user_id=$data->user_id;
-
+            
             $order->product_title=$data->product_title;
             $order->price=$data->price;
             $order->quantity=$data->quantity;
@@ -148,9 +169,14 @@ class HomeController extends Controller
             $order->delivery_status = 'processing';
 
             $order->save();
-            $cart_id=$data->id;
-            $cart=Cart::find($cart_id);
+
+            $cart_id = $data->id;
+            $cart = Cart::find($cart_id);
             $cart->delete();
+            $cart=Cart::where('user_id',$userid)->count();
+            session(['cart' => $cart]);
+
+
         }
         return redirect()->back()->with('message','We have received your order. We will connect you soon...');
     }

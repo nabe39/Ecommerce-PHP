@@ -105,6 +105,12 @@ a:focus {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+.btn-login{
+  width: 100px;
+  height: 100%;
+  background-color: rgb(236, 235, 235);
+  color: white;
+}
 
 /*header section*/
 .hero_area {
@@ -246,6 +252,20 @@ a:focus {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
   top: 0;
+}
+.cart{
+  position: relative;
+}
+.cart span{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  font-size:10px ;
+  color:white;
+  position: absolute;
+  top: 0;
+  right: 6px;
 }
 
 /*end header section*/
