@@ -393,6 +393,7 @@ a:focus {
     overflow: hidden;
     box-shadow: 5px 5px 5px -5px rgba(0,0,0,.2);
     /* border: solid #fff 10px; */
+    height: 90%;
 }
 
 .product_section .box .img-box {

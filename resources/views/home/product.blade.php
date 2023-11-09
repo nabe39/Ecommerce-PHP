@@ -8,15 +8,12 @@
        <div class="row">
          @foreach ($product as $products)
           <div class="col-sm-6 col-md-4 col-lg-4">
-             <div class="box card" style="">
+             <div class="box shadow mb-5 bg-white rounded" style="">
                 <div class="option_container">
                    <div class="options">
                       <a href="{{url('product_details',$products->id)}}" class="option1">
                         Details
                       </a>
-                      {{-- <a href="" class="option2">
-                      Buy Now
-                      </a> --}}
                       {{-- fix UI/ add to cart --}}
                       <form action="{{url('add_cart',$products->id)}}" method="post">
                         @csrf
@@ -32,29 +29,25 @@
                       {{-- fix UI --}}
                    </div>
                 </div>
-                <div class="img-box ">
-                   <img class="rounded mx-auto d-block" src="product/{{$products->image}}" alt="">
-                </div>
-                <div class="detail-box card-body">
-                   <h6>
-                      {{$products->title}}
-                   </h6>
-                   @if($products->discount_price !=null)
-                     <h6 class="card-text" style="color:red;padding: 0 10px;">
-                        Discount price <br>
-                        {{$products->discount_price}}$
-                     </h6>
-                     <h6 style="text-decoration: line-through; color:blue">
-                        Price <br>
-                        {{$products->price}}$
-                     </h6>
-                     @else
-                     <h6 style="color:blue">
-                        Price <br>
-                        {{$products->price}}$
-                     </h6>
-                   @endif
-                </div>
+                <img  src="product/{{$products->image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{$products->title}}</h5>
+                  <p class="card-text">{{$products->description}}</p>
+               </div>
+                <div class="d-flex justify-content-center">
+                  @if($products->discount_price !=null)
+                  <h4 style="text-decoration: line-through; opacity:0.5">
+                     {{$products->price}}$
+                  </h4>
+                  <h4 class="card-text pl-2">
+                     {{$products->discount_price}}$
+                  </h4>
+                  @else
+                  <h4>
+                     {{$products->price}}$
+                  </h4>
+                @endif
+               </div>
              </div>
           </div>
           @endforeach

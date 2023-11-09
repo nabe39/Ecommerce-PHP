@@ -140,17 +140,18 @@ class HomeController extends Controller
         session(['cart' => $cart]);
         return redirect()->back();
     }
-    public function cash_order(){
+    public function test(Request $request){
+        $arr = $request->checkbox;
+        dd($arr);
+        
+    }
+    public function cash_order(Request $request){
         $user=Auth::user();
         $userid=$user->id;
-        $data = Cart::where('user_id','=',$userid)->get();
-        // dd($data);
-        $productIds = []; // Initialize an array to store product IDs
-   
-        foreach ($data as $cartItem) {
-            $productIds[] = $cartItem->Product_id;
-        }
-        
+        // Lấy giá trị của checkbox từ request
+        $selectedProductIds = $request->input('checkbox', []);
+        // Lấy thông tin sản phẩm dựa trên ID đã được chọn
+        $data = Cart::whereIn('id', $selectedProductIds)->where('user_id', $userid)->get(); 
         foreach($data as $data){
             $order=new Order;
             $order->name=$data->name;
@@ -172,11 +173,10 @@ class HomeController extends Controller
 
             $cart_id = $data->id;
             $cart = Cart::find($cart_id);
+
             $cart->delete();
             $cart=Cart::where('user_id',$userid)->count();
             session(['cart' => $cart]);
-
-
         }
         return redirect()->back()->with('message','We have received your order. We will connect you soon...');
     }
