@@ -58,3 +58,5 @@ Route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
 Route::post('/cash_order',[HomeController::class,'cash_order']);
 
 Route::post('/test',[HomeController::class,'test'])->name('test');
+
+Route::get('/product_search',[HomeController::class,'product_search']);

@@ -180,4 +180,9 @@ class HomeController extends Controller
         }
         return redirect()->back()->with('message','We have received your order. We will connect you soon...');
     }
+    public function product_search(Request $request){
+        $search_text=$request->search;
+        $product=Product::where('title','LIKE',"%$search_text%")->orwhere('category','LIKE',"%$search_text%")->paginate(6);
+        return view('home.userpage',compact('product'));
+    }
 }
