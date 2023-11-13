@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
 class HomeController extends Controller
 {
@@ -31,30 +33,32 @@ class HomeController extends Controller
     }
     public function authLogin(Request $request){
         $data=$request;
-        // dd($data);
-        if(auth()->attempt([
-            'email'=>$data['email'],
-            'password'=>$data['password']
-        ])){
-           
-            $request->session()->regenerate();
-            $usertype=Auth::user()->usertype;
-            if($usertype == '1'){
-                return view('admin.home');
-            }else{
-                $product=Product::paginate(6);
-                $user = User::where('email',$data['email'])->first();
-                // $cart=Cart::where('user_id',$user->id)->count();
-                session(['name' => $user->name]);
-                // session(['cart' => $cart]);
-                $cart=Cart::where('user_id',$user->id)->count();
-                session(['cart' => $cart]);
-                return redirect(route('home'));
-            }
-        }else{
-            return redirect()->back();
-        }
-       
+            if(auth()->attempt([
+                'email'=>$data['email'],
+                'password'=>$data['password'],
+            ])){
+               
+                $request->session()->regenerate();
+                $userverify = Auth::user()->email_verified_at;
+              
+                if($userverify!== null){
+                    $usertype=Auth::user()->usertype;
+                    if($usertype == '1'){
+                        return view('admin.home');
+                    }else{
+                        $product=Product::paginate(6);
+                        $user = User::where('email',$data['email'])->first();
+                        session(['name' => $user->name]);
+                        $cart=Cart::where('user_id',$user->id)->count();
+                        session(['cart' => $cart]);
+                        return redirect(route('home'));
+                    }
+                }else{
+                    return view('auth.verify-email');
+                }
+                }else{
+                    return redirect()->back();
+                }
     }
     public static function countt ($id){
         $cart=Cart::where('user_id',$id)->count();
@@ -65,23 +69,34 @@ class HomeController extends Controller
     public function register(){
         return view('home.register');
     }
-    public function createRegister(Request $request){
-        $product=Product::paginate(6);
-        $data=$request;
-        if($data['password']==$data['password_confirmation']){
-            $user = new User;
-            $user->name = $data->name;
-            $user->email = $data->email;
-            $user->phone = $data->phone;
-            $user->address = $data->address;
+    public function createRegister(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'phone' => 'required|string|max:15',
+        'address' => 'required|string|max:255',
+        'password' => 'required|string|min:8|confirmed',
+    ]);
 
-            $user->password =bcrypt($data->password);
-            $user->save();
-            return redirect('login');
-        }
-       
-       return redirect()->back();
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'phone' => $request->phone,
+        'address' => $request->address,
+        'password' => Hash::make($request->password),
+    ]);
+
+    $user->sendEmailVerificationNotification();
+
+    return redirect()->route('verification.notice');
+}
+
+
     public function product_details(Request $request){
         $id=$request->id;
         $product=Product::where('id',$id)->first();

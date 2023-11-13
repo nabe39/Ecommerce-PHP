@@ -44,7 +44,7 @@
                                                  <a href="{{url('login')}}">Already have account ?</a>    
                                              </div>
                                              <div class="col-md-6 button-div">
-                                                 <button class="btn btn-primary">Register</button>
+                                                 <button class="btn btn-primary">{{ __('Register')}}</button>
                                              </div>
                                          </div>
                                     </form>

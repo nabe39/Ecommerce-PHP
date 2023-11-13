@@ -51,8 +51,8 @@
                    <div class="dropdown-menu mt-2">
                       <a class="dropdown-item" href="#">Profile</a>
                       <div class="dropdown-divider"></div>
-                      <form method="POST" action="{{ route('logout') }}" class="inline">
-                         @csrf
+                      <form method="post" action="{{ route('logout') }}" class="inline">
+                        @csrf
                          <button type="submit" id="logincss" class="dropdown-item">
                                {{ __('Log Out') }}
                         </button>
