@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
 use Exception;
 use GuzzleHttp\Psr7\Response;
 use PhpParser\Node\Stmt\TryCatch;
@@ -88,4 +89,22 @@ class AdminController extends Controller
         $product->save();
         return redirect('/show_product')->with('message','Update successfully');
     }
+    public function order()
+    {
+        $order=order::all();
+
+        return view('admin.order',compact('order'));
+    }
+
+    public function delivered($id)
+    {
+        $order =order::find($id);
+
+        $order->delivery_status="delivered";
+        $order->payment_status="Paid";
+        $order->save();
+        return redirect()->back();
+    }
+
+
 }

@@ -46,6 +46,10 @@ Route::get('/delete_product/{id}',[AdminController::class,'delete_product']);
 Route::get('/update_product/{id}',[AdminController::class,'update_product']);
 Route::post('/update_product_comfirm/{id}',[AdminController::class,'update_product_comfirm']);
 
+Route::get('/order',[AdminController::class,'order']);
+
+Route::get('/delivered/{id}',[AdminController::class,'delivered']);
+
 Route::post('/add_category',[AdminController::class,'add_category']);
 Route::post('/add_product',[AdminController::class,'add_product']);
 

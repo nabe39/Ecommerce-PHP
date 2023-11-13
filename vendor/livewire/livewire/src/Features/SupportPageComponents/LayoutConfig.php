@@ -5,11 +5,10 @@ namespace Livewire\Features\SupportPageComponents;
 use Illuminate\View\AnonymousComponent;
 use Livewire\Mechanisms\HandleComponents\ViewContext;
 
-class PageComponentConfig
+class LayoutConfig
 {
     public $slots = [];
     public $viewContext = null;
-    public $response;
 
     function __construct(
         public $type = 'component',

@@ -17,16 +17,10 @@ trait HandlesPageComponents
             $html = app('livewire')->mount($this::class, $params);
         });
 
-        $layoutConfig = $layoutConfig ?: new PageComponentConfig;
+        $layoutConfig = $layoutConfig ?: new LayoutConfig;
 
         $layoutConfig->normalizeViewNameAndParamsForBladeComponents();
 
-        $response = response(SupportPageComponents::renderContentsIntoLayout($html, $layoutConfig));
-
-        if (is_callable($layoutConfig->response)) {
-            call_user_func($layoutConfig->response, $response);
-        }
-
-        return $response;
+        return SupportPageComponents::renderContentsIntoLayout($html, $layoutConfig);
     }
 }
