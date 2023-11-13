@@ -49,6 +49,7 @@ Route::post('/update_product_comfirm/{id}',[AdminController::class,'update_produ
 Route::get('/order',[AdminController::class,'order']);
 
 Route::get('/delivered/{id}',[AdminController::class,'delivered']);
+Route::get('/print_pdf/{id}',[AdminController::class,'print_pdf']);
 
 Route::post('/add_category',[AdminController::class,'add_category']);
 Route::post('/add_product',[AdminController::class,'add_product']);
