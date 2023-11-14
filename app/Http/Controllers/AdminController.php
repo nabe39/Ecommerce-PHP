@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Dompdf\Adapter\PDFLib;
 use Exception;
 use GuzzleHttp\Psr7\Response;
 use PhpParser\Node\Stmt\TryCatch;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class AdminController extends Controller
 {
@@ -88,4 +93,29 @@ class AdminController extends Controller
         $product->save();
         return redirect('/show_product')->with('message','Update successfully');
     }
+    public function order()
+    {
+        $order=order::all();
+
+        return view('admin.order',compact('order'));
+    }
+
+    public function delivered($id)
+    {
+        $order =order::find($id);
+
+        $order->delivery_status="delivered";
+        $order->payment_status="Paid";
+        $order->save();
+        return redirect()->back();
+    }
+
+    public function print_pdf($id)
+    {
+        $order= order::find($id);
+        $pdf= PDF::loadView('admin.pdf',compact('order'));
+        return $pdf->download('order_details.pdf');
+    }
+
+
 }

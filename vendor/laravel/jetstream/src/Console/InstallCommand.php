@@ -134,10 +134,12 @@ class InstallCommand extends Command implements PromptsForMissingInput
      */
     protected function configureSession()
     {
-        try {
-            $this->call('session:table');
-        } catch (Exception $e) {
-            //
+        if (! class_exists('CreateSessionsTable')) {
+            try {
+                $this->call('session:table');
+            } catch (Exception $e) {
+                //
+            }
         }
 
         $this->replaceInFile("'SESSION_DRIVER', 'file'", "'SESSION_DRIVER', 'database'", config_path('session.php'));

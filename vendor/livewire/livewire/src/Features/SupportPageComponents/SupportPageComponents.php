@@ -20,7 +20,7 @@ class SupportPageComponents extends ComponentHook
     static function registerLayoutViewMacros()
     {
         View::macro('layoutData', function ($data = []) {
-            if (! isset($this->layoutConfig)) $this->layoutConfig = new PageComponentConfig;
+            if (! isset($this->layoutConfig)) $this->layoutConfig = new LayoutConfig;
 
             $this->layoutConfig->mergeParams($data);
 
@@ -28,7 +28,7 @@ class SupportPageComponents extends ComponentHook
         });
 
         View::macro('section', function ($section) {
-            if (! isset($this->layoutConfig)) $this->layoutConfig = new PageComponentConfig;
+            if (! isset($this->layoutConfig)) $this->layoutConfig = new LayoutConfig;
 
             $this->layoutConfig->slotOrSection = $section;
 
@@ -36,7 +36,7 @@ class SupportPageComponents extends ComponentHook
         });
 
         View::macro('title', function ($title) {
-            if (! isset($this->layoutConfig)) $this->layoutConfig = new PageComponentConfig;
+            if (! isset($this->layoutConfig)) $this->layoutConfig = new LayoutConfig;
 
             $this->layoutConfig->mergeParams(['title' => $title]);
 
@@ -44,7 +44,7 @@ class SupportPageComponents extends ComponentHook
         });
 
         View::macro('slot', function ($slot) {
-            if (! isset($this->layoutConfig)) $this->layoutConfig = new PageComponentConfig;
+            if (! isset($this->layoutConfig)) $this->layoutConfig = new LayoutConfig;
 
             $this->layoutConfig->slotOrSection = $slot;
 
@@ -52,7 +52,7 @@ class SupportPageComponents extends ComponentHook
         });
 
         View::macro('extends', function ($view, $params = []) {
-            if (! isset($this->layoutConfig)) $this->layoutConfig = new PageComponentConfig;
+            if (! isset($this->layoutConfig)) $this->layoutConfig = new LayoutConfig;
 
             $this->layoutConfig->type = 'extends';
             $this->layoutConfig->slotOrSection = 'content';
@@ -63,20 +63,12 @@ class SupportPageComponents extends ComponentHook
         });
 
         View::macro('layout', function ($view, $params = []) {
-            if (! isset($this->layoutConfig)) $this->layoutConfig = new PageComponentConfig;
+            if (! isset($this->layoutConfig)) $this->layoutConfig = new LayoutConfig;
 
             $this->layoutConfig->type = 'component';
             $this->layoutConfig->slotOrSection = 'slot';
             $this->layoutConfig->view = $view;
             $this->layoutConfig->mergeParams($params);
-
-            return $this;
-        });
-
-        View::macro('response', function (callable $callback) {
-            if (! isset($this->layoutConfig)) $this->layoutConfig = new PageComponentConfig;
-
-            $this->layoutConfig->response = $callback;
 
             return $this;
         });
@@ -101,7 +93,7 @@ class SupportPageComponents extends ComponentHook
                 $view->title($titleAttr->content);
             }
 
-            $layoutConfig = $view->layoutConfig ?? new PageComponentConfig;
+            $layoutConfig = $view->layoutConfig ?? new LayoutConfig;
 
             return function ($html, $replace, $viewContext) use ($view, $layoutConfig) {
                 // Gather up any slots and sections declared in the component template and store them

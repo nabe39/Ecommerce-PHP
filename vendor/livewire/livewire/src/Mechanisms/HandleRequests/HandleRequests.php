@@ -26,9 +26,7 @@ class HandleRequests
 
     function getUpdateUri()
     {
-        return (string) str(
-            route($this->updateRoute->getName(), [], false)
-        )->start('/');
+        return (string) str($this->updateRoute->uri)->start('/');
     }
 
     function skipRequestPayloadTamperingMiddleware()
@@ -47,9 +45,7 @@ class HandleRequests
         $route = $callback([self::class, 'handleUpdate']);
 
         // Append `livewire.update` to the existing name, if any.
-        if (! str($route->getName())->endsWith('livewire.update')) {
-            $route->name('livewire.update');
-        }
+        $route->name('livewire.update');
 
         $this->updateRoute = $route;
     }
