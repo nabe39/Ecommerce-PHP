@@ -8,18 +8,10 @@ class FileUploadController
 {
     public function getMiddleware()
     {
-        /**
-         * Laravel requires the returned array to contain an array for each
-         * middleware with `middleware` and `options` keys. So we'll map
-         * through the file upload config middleware and format them.
-         */
-        return array_map(
-            fn($middleware) => [
-                'middleware' => $middleware,
-                'options' => [],
-            ],
-            (array) FileUploadConfiguration::middleware()
-        );
+        return [[
+            'middleware' => FileUploadConfiguration::middleware(),
+            'options' => [],
+        ]];
     }
 
     public function handle()

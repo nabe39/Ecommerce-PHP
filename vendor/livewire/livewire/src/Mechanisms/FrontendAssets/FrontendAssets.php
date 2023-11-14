@@ -82,8 +82,6 @@ class FrontendAssets
 
         $nonce = isset($options['nonce']) ? "nonce=\"{$options['nonce']}\"" : '';
 
-        $progressBarColor = config('livewire.navigate.progress_bar_color', '#2299dd');
-
         $html = <<<HTML
         <!-- Livewire Styles -->
         <style {$nonce}>
@@ -91,7 +89,7 @@ class FrontendAssets
                 display: none;
             }
 
-            [wire\:loading\.delay\.none], [wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.default], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {
+            [wire\:loading\.delay\.shortest], [wire\:loading\.delay\.shorter], [wire\:loading\.delay\.short], [wire\:loading\.delay\.long], [wire\:loading\.delay\.longer], [wire\:loading\.delay\.longest] {
                 display:none;
             }
 
@@ -101,10 +99,6 @@ class FrontendAssets
 
             [wire\:dirty]:not(textarea):not(input):not(select) {
                 display: none;
-            }
-
-            :root {
-                --livewire-progress-bar-color: {$progressBarColor};
             }
 
             [x-cloak] {
