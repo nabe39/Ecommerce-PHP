@@ -24,7 +24,7 @@
                                         <div class="logo-cover">
                                             <img src="login/assets/images/logo.png" alt="">
                                         </div>
-                                        <form class="form-cover" method="POST" action="{{route('register')}}">
+                                        <form class="form-cover" method="POST" action="{{route('inputregister')}}">
                                             @csrf
                                             <h6>Register</h6>
                                             <input placeholder="Enter Name" id="name" type="text" class="form-control" name="name" required>

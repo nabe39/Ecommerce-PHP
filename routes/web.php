@@ -5,6 +5,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VerifyController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
@@ -32,31 +33,18 @@ Route::get('/', [HomeController::class,'index'])->name('home');
 // });
 
 // Verify
+Route::get('/email/verify',[VerifyController::class,'notice'])->name('verification.notice');
 
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    event(new Verified($request->user()));
-
-    return redirect(route('login'));
-})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}',[VerifyController::class,'makeverify'])->middleware(['auth', 'signed'])->name('verification.verify');
  
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
- 
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::post('/email/verification-notification',[VerifyController::class,'sendVerificationEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Login - Register
 Route::get('login',[HomeController::class,'login']);
 Route::post('login',[HomeController::class,'authLogin'])->name('login');
 
-Route::get('register',[HomeController::class,'register']);
-Route::post('register',[HomeController::class,'createRegister'])->name('register');
+Route::get('register',[HomeController::class,'register'])->name('register');
+Route::post('register',[HomeController::class,'createRegister'])->name('inputregister');
 
 
 Route::get('/redirect',[HomeController::class,'redirect']);

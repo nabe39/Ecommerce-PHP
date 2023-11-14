@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Cart;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Models\Product;
-use App\Models\Cart;
-use App\Models\Order;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -82,19 +83,23 @@ class HomeController extends Controller
     if ($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();
     }
-
+    $remember_token =random_int(100000, 999999);
     $user = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'phone' => $request->phone,
         'address' => $request->address,
         'password' => Hash::make($request->password),
+        'remember_token' =>$remember_token,
     ]);
 
     $user->sendEmailVerificationNotification();
 
     return redirect()->route('verification.notice');
 }
+    public function sendEmailVerificationNotification(){
+
+    }
 
 
     public function product_details(Request $request){
