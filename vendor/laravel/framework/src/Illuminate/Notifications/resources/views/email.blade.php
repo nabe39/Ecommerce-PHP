@@ -19,7 +19,6 @@
 {{-- Action Button --}}
 @isset($actionText)
 <?php
-    
     $color = match ($level) {
         'success', 'error' => $level,
         default => 'primary',
