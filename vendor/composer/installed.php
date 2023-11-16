@@ -4,7 +4,6 @@
 
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-=======
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
 
@@ -433,7 +432,6 @@
 
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-=======
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
 
