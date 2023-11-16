@@ -34,22 +34,24 @@ Route::middleware([
 
 // Verify
 Route::get('/email/verify',[VerifyController::class,'notice'])->name('verification.notice');
+Route::post('/email/verify}',[VerifyController::class,'makeverify'])->name('verification.verify');
 
-Route::get('/email/verify/{id}/{hash}',[VerifyController::class,'makeverify'])->middleware(['auth', 'signed'])->name('verification.verify');
+// Route::get('/email/verify/{id}/{hash}',[VerifyController::class,'makeverify'])->middleware(['auth', 'signed'])->name('verification.verify');
  
-Route::post('/email/verification-notification',[VerifyController::class,'sendVerificationEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+// Route::post('/email/verification-notification',[VerifyController::class,'sendVerificationEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //Login - Register
-Route::get('login',[HomeController::class,'login']);
-Route::post('login',[HomeController::class,'authLogin'])->name('login');
+Route::get('login',[VerifyController::class,'login']);
+Route::post('login',[VerifyController::class,'authLogin'])->name('login');
 
-Route::get('register',[HomeController::class,'register'])->name('register');
-Route::post('register',[HomeController::class,'createRegister'])->name('inputregister');
+Route::get('register',[VerifyController::class,'register'])->name('register');
+Route::post('register',[VerifyController::class,'createRegister'])->name('inputregister');
 
 
 Route::get('/redirect',[HomeController::class,'redirect']);
 
 //Features
+//Admin
 Route::get('/view_category',[AdminController::class,'view_category']);
 Route::get('/view_product',[AdminController::class,'view_product']);
 Route::get('/show_product',[AdminController::class,'show_product']);
@@ -72,7 +74,7 @@ Route::post('/send_user_email/{id}',[AdminController::class,'send_user_email']);
 Route::post('/add_category',[AdminController::class,'add_category']);
 Route::post('/add_product',[AdminController::class,'add_product']);
 
-
+//Home
 Route::get('/product_details/{id}',[HomeController::class,'product_details']);
 
 Route::post('/add_cart/{id}',[HomeController::class,'add_cart']);

@@ -43,78 +43,14 @@ class HomeController extends Controller
         }
     }
 
-    public function login(){
-        return view('home.login');
-    }
-    public function authLogin(Request $request){
-        $data=$request;
-            if(auth()->attempt([
-                'email'=>$data['email'],
-                'password'=>$data['password'],
-            ])){
-               
-                $request->session()->regenerate();
-                $userverify = Auth::user()->email_verified_at;
-              
-                if($userverify!== null){
-                    $usertype=Auth::user()->usertype;
-                    if($usertype == '1'){
-                        return view('admin.home');
-                    }else{
-                        $product=Product::paginate(6);
-                        $user = User::where('email',$data['email'])->first();
-                        session(['name' => $user->name]);
-                        $cart=Cart::where('user_id',$user->id)->count();
-                        session(['cart' => $cart]);
-                        return redirect(route('home'));
-                    }
-                }else{
-                    return view('auth.verify-email');
-                }
-                }else{
-                    return redirect()->back();
-                }
-    }
+    
     public static function countt ($id){
         $cart=Cart::where('user_id',$id)->count();
         session(['cart' => $cart]);
         dd($cart);
     }
 
-    public function register(){
-        return view('home.register');
-    }
-    public function createRegister(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
-        'phone' => 'required|string|max:15',
-        'address' => 'required|string|max:255',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
-    $remember_token =random_int(100000, 999999);
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'phone' => $request->phone,
-        'address' => $request->address,
-        'password' => Hash::make($request->password),
-        'remember_token' =>$remember_token,
-    ]);
-
-    $user->sendEmailVerificationNotification();
-
-    return redirect()->route('verification.notice');
-}
-    public function sendEmailVerificationNotification(){
-
-    }
-
+    
 
     public function product_details(Request $request){
         $id=$request->id;
@@ -173,11 +109,6 @@ class HomeController extends Controller
         $cart=Cart::where('user_id',$userid)->count();
         session(['cart' => $cart]);
         return redirect()->back();
-    }
-    public function test(Request $request){
-        $arr = $request->checkbox;
-        dd($arr);
-        
     }
     public function cash_order(Request $request){
         $user=Auth::user();
