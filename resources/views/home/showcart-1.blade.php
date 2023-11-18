@@ -134,9 +134,9 @@
                                                     <h5>${{$totalprice}}</h5>
                                                 </div>
                                                 <button href="{{url('cash_order')}}" type="submit"
-                                                    class="btn btn-outline-dark btn-block btn-lg"
+                                                    class="btn-outline-dark btn-block btn-lg"
                                                     data-mdb-ripple-color="dark">Cash on delivery</button>
-                                                <button href="" type="button" class="btn btn-outline-dark btn-block btn-lg "
+                                                <button href="" type="button" class="btn-outline-dark btn-block btn-lg "
                                                     data-mdb-ripple-color="dark">Pay using card</button>
                                             </div>
                                 </form>

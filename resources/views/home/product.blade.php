@@ -4,11 +4,11 @@
           <h2>
              Our <span>Products</span>
           </h2>
-          <div>
+          <div class="col">
             <form action="{{url('product_search')}}" method="get">
                @csrf
-               <input type="text" name="search" placeholder="Search for something">
-               <input type="submit" value="search">
+               <input class="placeholder col-7 rounded-pill input" type="text" name="search" placeholder="Search for something....">
+               <input type="submit" value="search" class="rounded-pill">
             </form>
           </div>
        </div>
@@ -18,7 +18,7 @@
              <div class="box shadow mb-5 bg-white rounded" style="">
                 <div class="option_container">
                    <div class="options">
-                      <a href="{{url('product_details',$products->id)}}" class="option1">
+                      <a href="{{url('product_details',$products->id)}}" class="option1 btn">
                         Details
                       </a>
                       {{-- fix UI/ add to cart --}}
@@ -29,7 +29,7 @@
                               <input type="number" name="quantity" value="1" min="1" style="width: 100px">
                            </div>
                            <div class="col-md-4">
-                              <input type="submit" value="Add to Cart" class="option2">
+                              <input type="submit" value="Add to Cart" class="option2 rounded-pill">
                            </div>
                         </div>
                       </form>
