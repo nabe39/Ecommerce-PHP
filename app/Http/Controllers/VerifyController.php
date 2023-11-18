@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 use App\Mail\VerifyEmail;
 use Illuminate\Http\Request;
@@ -34,7 +35,21 @@ class VerifyController extends Controller
                 if($userverify!== null){
                     $usertype=Auth::user()->usertype;
                     if($usertype == '1'){
-                        return view('admin.home');
+                        $total_product =product::all()->count();
+                        $total_order =order::all()->count();
+                        $total_user =user::all()->count();
+            
+                        $order=order::all();
+                        $total_revenue=0;
+                        foreach($order as $order)
+                        {
+                            $total_revenue=$total_revenue+ $order->price;
+                        }
+            
+                        $total_delivered= order::where('delivery_status','=','delivered')->get()->count();
+                        $total_processing= order::where('delivery_status','=','processing')->get()->count();
+            
+                        return view('admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
                     }else{
                         $product=Product::paginate(6);
                         $user = User::where('email',$data['email'])->first();
