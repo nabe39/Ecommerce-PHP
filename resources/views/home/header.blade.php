@@ -2,6 +2,7 @@
    <?php
    $name=session('name');
    $cart=session('cart');
+   $order=session('orderCount')
    ?>
     <div class="container">
        <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -27,24 +28,35 @@
                      <li><a href="testimonial.html">Contact</a></li>
                   </ul>
                </li>
-                <li class="nav-item">
-                  <div class="pr-3">
-                     <a class="nav-link cart rounded-pill " href="{{url('show_cart')}}">
-                        <i style="color:black" class="bi bi-cart-fill "></i>
-                        @if($cart > 0)
-                        <span class="">{{$cart}}</span>
-                        @endif
-                     </a>
-                  </div>
-
-                </li>
-
                 {{-- <form class="form-inline">
                     <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                  </form> --}}
-
+                 <li class="nav-item">
+                  <div class=" pr-1">
+                     <a class="nav-link cart rounded-pill" href="{{url('show_cart')}}">
+                        <i style="color:black" class="bi bi-cart-fill "></i>
+                        @if($cart > 0)
+                        <span class="">{{$cart}}</span>
+                        @endif
+                        
+                     </a>
+                  </div>
+                </li>
+                {{-- <li class="nav-item" style="display: flex;align-items: center;">
+                  <div style="border: 1px solid black;height: 1.5rem; opacity:0.7" ></div>
+                </li> --}}
+                <li class="nav-item">
+                  <div class="pl-1 pr-3">
+                     <a class="nav-link cart rounded-pill" href="{{url('show_order')}}">
+                        <i class="fa-solid fa-truck" style="color: #000000;"></i>
+                        @if($order > 0)
+                        <span class="">{{$order}}</span>
+                        @endif
+                     </a>
+                  </div>
+                </li>
                @if(Route::has('login'))
                @auth
                <div class="dropdown">
@@ -88,7 +100,6 @@
                   </li>
                @endauth
                @endif
-               
              </ul>
           </div>
        </nav>

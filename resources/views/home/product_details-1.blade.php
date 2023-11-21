@@ -55,12 +55,16 @@
                             @endif
                         </div>
                         <p class="lead text-uppercase-before-dot">{{$product->description}}</p>
+                        @if($product->quantity == 0)
+                        <span>Quantity: Sold Out</span>
+                        @else
                         <span>Quantity: {{$product->quantity}}</span>
+                        @endif
                         <form action="{{url('add_cart',$product->id)}}" method="post">
                             @csrf
                             <div class="d-flex">
-                                <input class="form-control text-center me-3" name="quantity" id="inputQuantity" type="num" value="1" min="1"style="max-width: 3rem" />
-                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">
+                                <input  <?php echo $product->quantity == 0 ? "disabled" : ""; ?>  class="form-control text-center me-3" name="quantity" id="inputQuantity" type="num" value="1" min="1"style="max-width: 3rem" />
+                                <button <?php echo $product->quantity == 0 ? "disabled" : ""; ?> class="btn btn-outline-dark flex-shrink-0 <?php echo $product->quantity == 0 ? "disabled-btn" : ''; ?>" "  type="submit">
                                     <i class="bi-cart-fill me-1"></i>
                                     Add to cart
                                 </button>
@@ -122,5 +126,6 @@
         <script src="home/js/bootstrap.js"></script>
         <!-- custom js -->
         <script src="home/js/custom.js"></script>
+        <script src="https://kit.fontawesome.com/7ab09b7a32.js" crossorigin="anonymous"></script>
     </body>
 </html>

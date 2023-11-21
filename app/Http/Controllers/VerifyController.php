@@ -56,13 +56,15 @@ class VerifyController extends Controller
                         session(['name' => $user->name]);
                         $cart=Cart::where('user_id',$user->id)->count();
                         session(['cart' => $cart]);
+                        $order = Order::where('user_id', $user->id)->count();
+                        session(['orderCount' => $order]);
                         return redirect(route('home'));
                     }
                 }else{
                     return view('home.signin.verifycode');
                 }
                 }else{
-                    return redirect()->back();
+                    return redirect()->back()->with('error','Wrong Email or Password');
                 }
     }
     //Register

@@ -29,8 +29,7 @@
                               <input type="number" name="quantity" value="1" min="1" style="width: 100px">
                            </div>
                            <div class="col-md-4">
-                              <input type="submit" value="Add to Cart" class="option2 rounded-pill">
-                           </div>
+                              <input  <?php echo $products->quantity == 0 ? "disabled" : ""; ?> type="submit" value="Add to Cart" class="option2 rounded-pill <?php echo $products->quantity == 0 ? 'disabled-btn' : ''; ?>">   </div>
                         </div>
                       </form>
                       {{-- fix UI --}}
@@ -41,19 +40,25 @@
                   <h5 class="card-title">{{$products->title}}</h5>
                   <p class="card-text">{{$products->description}}</p>
                </div>
-                <div class="d-flex justify-content-center">
-                  @if($products->discount_price !=null)
-                  <h4 style="text-decoration: line-through; opacity:0.5">
-                     {{$products->price}}$
-                  </h4>
-                  <h4 class="card-text pl-2">
-                     {{$products->discount_price}}$
-                  </h4>
+                <div class="d-flex justify-content-between">
+                  @if($products->quantity == 0)
+                  <h5> Sold out </h5>
                   @else
-                  <h4>
+                  <h5><i style="color:black" class="bi bi-cart "></i> {{$products->quantity}}</h5>
+                  @endif
+                  @if($products->discount_price !=null)
+                  <h5 style="text-decoration: line-through; opacity:0.5">
                      {{$products->price}}$
-                  </h4>
+                  </h5>
+                  <h5 class="card-text pl-2">
+                     {{$products->discount_price}}$
+                  </h5>
+                  @else
+                  <h5>
+                     {{$products->price}}$
+                  </h5>
                 @endif
+
                </div>
              </div>
           </div>
