@@ -46,17 +46,7 @@
     @include('home.product')
     <!-- end product section -->
 
-    <!--  comment and reply system start -->
-    <div>
-      <h1 style="font-size: 30px;text-align:center;padding-top:20px;padding-bottom:20px">Comments</h1>
-      <form action="">
-         <textarea style="height:150px;width:600px " name="" id="" cols="30" rows="10">
 
-         </textarea>
-         <a href="" class="btn-primary">Comment</a>
-      </form>
-    </div>
-    <!--  comment and reply system end -->
    
 
    

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Comment;
+use App\Models\Reply;
 use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -52,15 +54,49 @@ class HomeController extends Controller
     // }
 
     
-
+    //Detail page
     public function product_details(Request $request){
         $id=$request->id;
         $product=Product::where('id',$id)->first();
         $category= $product->category;
         $request->session()->put('product',$product);
         $related = Product::where('category',$category)->get();
-        return view('home.product_details-1',compact('related'));
+        $comment = Comment::where('product_id',$id)->get();
+        $reply = Reply::where('product_id',$id)->get();
+        return view('home.product_details-1',compact('related','comment','reply'));
     }
+    public function add_comment(Request $request){
+        $idProduct=$request->id;
+        if(Auth::id()){
+            $comment = new Comment;
+            $comment->name = Auth::user()->name;
+            $comment->user_id = Auth::user()->id;
+            $comment->comment = $request->comment;
+            $comment->product_id =$idProduct;
+            $comment->save();
+            return redirect()->back();
+
+        }else{
+            return redirect()->route('login');
+        }
+    }
+    public function add_reply(Request $request){
+        $idProduct=$request->id;
+        if(Auth::id()){
+            $reply = new Reply;
+            $reply->name = Auth::user()->name;
+            $reply->user_id = Auth::user()->id;
+            $reply->comment_id = $request->commentId;
+            $reply->reply = $request->reply;
+            $reply->product_id =$idProduct;
+            $reply->save();
+            return redirect()->back();
+
+        }else{
+            return redirect()->route('login');
+        }
+    }
+    //Cart page
     public function add_cart(Request $request, $id){
         if(Auth::id()){
             $user=Auth::user(); //get user data
@@ -97,7 +133,7 @@ class HomeController extends Controller
 
         }
         else{
-            return redirect('login');
+            return redirect()->route('login');
         }
     }
     public function show_cart(){
@@ -106,7 +142,7 @@ class HomeController extends Controller
             $cart=Cart::where('user_id','=',$id)->get();
             return view('home.showcart-1',compact('cart'));
         }
-            return redirect(route('login'));
+            return redirect()->route('login');
     }
     public function remove_cart($id){
         $cart=Cart::find($id);
@@ -165,11 +201,7 @@ class HomeController extends Controller
             return redirect()->back()->with('message', 'We have received your order. We will connect you soon...');
         }
     }
-    public function product_search(Request $request){
-        $search_text=$request->search;
-        $product=Product::where('title','LIKE',"%$search_text%")->orwhere('category','LIKE',"%$search_text%")->paginate(6);
-        return view('home.userpage',compact('product'));
-    }
+    //Order page
     public function show_order(){
         if(Auth::id()){
             $user=Auth::user();
@@ -180,7 +212,7 @@ class HomeController extends Controller
             // dd($order->delivery_status);
             return view('home.order',compact('order'));
         }else{
-            return redirect('login');
+            return redirect()->route('login');
         }
     }
     public function remove_order($id){
@@ -191,5 +223,11 @@ class HomeController extends Controller
         $order=Order::where('user_id',$userid)->count();
         session(['orderCount' => $order]);
         return redirect()->back();
+    }
+    //Home page
+    public function product_search(Request $request){
+        $search_text=$request->search;
+        $product=Product::where('title','LIKE',"%$search_text%")->orwhere('category','LIKE',"%$search_text%")->paginate(6);
+        return view('home.userpage',compact('product'));
     }
 }

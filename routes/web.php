@@ -37,13 +37,9 @@ Route::middleware([
 Route::get('/email/verify',[VerifyController::class,'notice'])->name('verification.notice');
 Route::post('/email/verify}',[VerifyController::class,'makeverify'])->name('verification.verify');
 
-// Route::get('/email/verify/{id}/{hash}',[VerifyController::class,'makeverify'])->middleware(['auth', 'signed'])->name('verification.verify');
- 
-// Route::post('/email/verification-notification',[VerifyController::class,'sendVerificationEmail'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
 //Login - Register
-Route::get('login',[VerifyController::class,'login']);
-Route::post('login',[VerifyController::class,'authLogin'])->name('login');
+Route::get('login',[VerifyController::class,'login'])->name('login');
+Route::post('login',[VerifyController::class,'authLogin'])->name('authLogin');
 
 Route::get('register',[VerifyController::class,'register'])->name('register');
 Route::post('register',[VerifyController::class,'createRegister'])->name('inputregister');
@@ -52,7 +48,9 @@ Route::post('register',[VerifyController::class,'createRegister'])->name('inputr
 Route::get('/redirect',[HomeController::class,'redirect']);
 
 //Features
+
 //Admin
+
 Route::get('/view_category',[AdminController::class,'view_category']);
 Route::get('/view_product',[AdminController::class,'view_product']);
 Route::get('/show_product',[AdminController::class,'show_product']);
@@ -76,15 +74,22 @@ Route::post('/add_category',[AdminController::class,'add_category']);
 Route::post('/add_product',[AdminController::class,'add_product']);
 
 //Home
-Route::get('/product_details/{id}',[HomeController::class,'product_details']);
 
+//Detail page
+Route::get('/product_details/{id}',[HomeController::class,'product_details']);
+Route::post('/add_comment/{id}',[HomeController::class,'add_comment'])->name('addComment');
+Route::post('/add_reply/{id}',[HomeController::class,'add_reply'])->name('addReply');
+
+//Cart page
 Route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
 Route::get('/show_cart',[HomeController::class,'show_cart']);
 Route::get('/remove_cart/{id}',[HomeController::class,'remove_cart']);
 
 Route::post('/cash_order',[HomeController::class,'cash_order']);
 
+//Home page
 Route::get('/product_search',[HomeController::class,'product_search']);
 
+//Order page
 Route::get('/show_order',[HomeController::class,'show_order'])->name('showOrder');
 Route::get('/remove_order/{id}',[HomeController::class,'remove_order'])->name('deleteOrder');
