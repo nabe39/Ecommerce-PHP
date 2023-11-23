@@ -41,11 +41,9 @@
                                             name="email" required>
                                         <input Placeholder="Enter Password" id="password" type="password"
                                             class="form-control" name="password" required>
-                                        @if (session()->has('message'))
-                                        <div class="alert alert-success">
-                                            <button type="button" class="close" data-dismiss="alert"
-                                                aria-hidden="true">x</button>
-                                            {{$messages}}
+                                        @if (session()->has('error'))
+                                        <div class="alert alert-danger">
+                                            {{session()->get('error')}}
                                         </div>
                                         @endif
                                         <div class="row form-footer">

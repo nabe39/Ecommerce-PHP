@@ -1,28 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{--title  --}}
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Cart</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/png">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>OrderPiece</title>
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
     <!-- font awesome style -->
     <link href="home/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
-    <link href="add-cart/css/style.css" rel="stylesheet" />
     <link href="home/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="home/css/responsive.css" rel="stylesheet" />
-    {{-- link icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
 <body>
@@ -30,83 +29,93 @@
         <!-- header section strats -->
         @include('home.header')
         <!-- end header section -->
+
+        <!-- Order section -->
         <section class="h-100 h-custom" style="background-color: #d2c9ff;">
             <div class="container py-5 h-100">
                 @if (session()->has('message'))
-                <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                    {{session()->get('message')}}
-                </div>
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                        {{ session()->get('message') }}
+                    </div>
                 @elseif (session()->has('error'))
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                    {{session()->get('error')}}
-                </div>
+                    <div class="alert alert-danger">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                        {{ session()->get('error') }}
+                    </div>
                 @endif
-                <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100 h-custom">
                     <div class="col-12">
                         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                             <div class="card-body p-0">
-                                <form id="cash_oder" action="{{url('cash_order')}}" method="POST">
+                                <form id="cash_oder" action="{{url('show_order')}}" method="POST">
                                     <div class="row g-0">
-                                        <div class="col-lg-8">
+                                        <div class="col">
                                             <div class="p-5">
                                                 <div class="d-flex justify-content-between align-items-center mb-5">
                                                     <h1 style="font-family: 'Montserrat', sans-serif"
                                                         class="fw-bold mb-0 ">
-                                                        Shopping Cart</h1>
+                                                        Shopping Order</h1>
                                                 </div>
                                                 @csrf
                                                 <div class="container">
-                                                    <div
-                                                        class="row mb-4 d-flex justify-content-center align-items-center">
-                                                        <div class=" col-md-4 col-lg-4 col-xl-6 font-weight-bold">
+                                                    <div class="row mb-4 d-flex justify-content-center align-items-center">
+                                                        <div class=" col-md-2 col-lg-2 col-xl-2 font-weight-bold">
                                                             Product Name
                                                         </div>
-                                                        <div class="col-md-2 col-lg-2 col-xl-3 pl-2 font-weight-bold">
+                                                        <div class="col-md-2 col-lg-2 col-xl-2 pl-2 font-weight-bold">
                                                             Quantity
                                                         </div>
-                                                        <div class="col-md-2 col-lg-2 col-xl-3 font-weight-bold">
+                                                        <div class="col-md-2 col-lg-2 col-xl-2 font-weight-bold">
                                                             Price
                                                         </div>
-                                                        <div></div>
+                                                        <div class="col-md-2 col-lg-2 col-xl-2 font-weight-bold">
+                                                            Payment Status
+                                                        </div>
+                                                        <div class="col-md-2 col-lg-2 col-xl-2 font-weight-bold">
+                                                            Deliver Status
+                                                        </div>
+                                                        <div class="col-md-2 col-lg-2 col-xl-2 font-weight-bold">
+                                                            Image
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <?php $totalprice=0; $totalquantity=0?>
-                                                @foreach($cart as $cart)
+                                                @foreach($order as $order) 
                                                 <hr class="my-4">
                                                 <div class="row mb-4 d-flex justify-content-between align-items-center">
                                                     <div>
                                                         <input name="checkbox[]" type="checkbox" class="checkbox"
-                                                            value="{{$cart->id}}"></input>
+                                                            value=""></input>
                                                     </div>
-                                                    <div class="col-md-2 col-lg-2 col-xl-2">
-                                                        <img src="/product/{{$cart->image}}" class="img-fluid rounded-3"
-                                                            alt="Cotton T-shirt">
-                                                    </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                                    <div class="col">
                                                         {{-- <h6 class="text-muted">{{$cart->category}}</h6> --}}
-                                                        <h6 class="text-black mb-0">{{$cart->product_title}}</h6>
+                                                        <h6 class="text-black mb-0">{{$order->product_title}}</h6>
                                                     </div>
-                                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                        <input id="form1" min="0" name="quantity"
-                                                            value="{{$cart->quantity}}" type="number"
-                                                            class="form-control form-control-sm" disabled />
-
+                                                    <div class="col">
+                                                        <h6 class="text-black -3">{{$order->quantity}}</h6>
                                                     </div>
-                                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                        <h6 class="text-black -3">${{$cart->price}}</h6>
+                                                    <div class="col">
+                                                        <h6 class="text-black -3">{{$order->price}}</h6>
                                                     </div>
-                                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-
-                                                        <a class="text-muted"
-                                                            onclick="return confirm('Are you sure to remove this product')"
-                                                            href="{{url('remove_cart',$cart->id)}}"><i
-                                                                class="fas fa-times"></i></a>
+                                                    <div class="col">
+                                                        <h6 class="text-black -3">{{$order->payment_status}}</h6>
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="text-black -3">{{$order->delivery_status}}</h6>
+                                                    </div>
+                                                    <div class="col">
+                                                        <img src="/product/{{$order->image}}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                                    </div>
+                                                    <div class="col-0">
+                                                        @if($order->delivery_status=='processing')
+                                                            <a class="text-muted"
+                                                                onclick="return confirm('Are you sure to cancel this Order')"
+                                                                href="{{url('remove_order',$id=$order->id)}}"><i class="fas fa-times"></i></a>
+                                                        @endif
                                                     </div>
                                                 </div>
-                                                <?php $totalprice=$totalprice + $cart->price; $totalquantity=$totalquantity + $cart->quantity?>
-                                                @endforeach
+                                                @endforeach 
+                                            </div>
+                                           
                                                 <div class="container">
                                                     <div class="row d-flex  justify-content-end">
                                                         <div class="">
@@ -128,24 +137,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 bg-grey">
-                                            <div class="p-5">
-                                                <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
-                                                <span style="font-family: 'Montserrat', sans-serif"
-                                                    class="fw-bold mb-0 ">{{$totalquantity}} iteams</span>
-                                                <hr class="my-4">
-                                                <div class="d-flex justify-content-between mb-5">
-                                                    <h5 class="text-uppercase">Total price</h5>
-                                                    <h5>${{$totalprice}}</h5>
-                                                </div>
-                                                <button href="{{url('cash_order')}}" type="submit"
-                                                    class="btn-outline-dark btn-block btn-lg"
-                                                    data-mdb-ripple-color="dark">Cash on delivery</button>
-                                                <button href="" type="button" class="btn-outline-dark btn-block btn-lg "
-                                                    data-mdb-ripple-color="dark">Pay using card</button>
-                                            </div>
-                                </form>
-                            </div>
+                                    </form>
                         </div>
                     </div>
                 </div>
@@ -153,20 +145,26 @@
     </div>
     </div>
     </section>
+    <!-- end Order section -->
+
     <!-- footer start -->
     @include('home.footer')
     <!-- footer end -->
     </div>
-    <!-- jQery -->
-    <script src="home/js/jquery-3.4.1.min.js"></script>
-    <!-- popper js -->
-    <script src="home/js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="home/js/bootstrap.js"></script>
-    <!-- custom js -->
-    <script src="home/js/custom.js"></script>
 
+    <!-- jQery -->
     <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var scrollpos = localStorage.getItem('scrollpos');
+            if (scrollpos) window.scrollTo(0, scrollpos);
+        });
+
+        window.onbeforeunload = function (e) {
+            localStorage.setItem('scrollpos', window.scrollY);
+        };
+
+    </script>
+     <script>
         // Lấy checkbox "select all" và tất cả các checkbox khác
         var form = document.getElementById("cash_order");
         var selectAllCheckbox = document.getElementById("select-all");
@@ -239,6 +237,17 @@
             });
         }
     </script>
+
+    <script src="home/js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="home/js/popper.min.js"></script>
+    <!-- bootstrap js -->
+    <script src="home/js/bootstrap.js"></script>
+
+    <!-- custom js -->
+    <script src="home/js/custom.js"></script>
+
+    <script src="https://kit.fontawesome.com/7ab09b7a32.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

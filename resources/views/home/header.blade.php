@@ -2,6 +2,7 @@
    <?php
    $name=session('name');
    $cart=session('cart');
+   $order=session('orderCount')
    ?>
     <div class="container">
        <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -27,49 +28,78 @@
                      <li><a href="testimonial.html">Contact</a></li>
                   </ul>
                </li>
-                <li class="nav-item">
-                   <a class="nav-link cart" href="{{url('show_cart')}}">
-                     <i style="color:black" class="bi bi-cart-fill"></i>
-                     @if($cart > 0)
-                     <span class="">{{$cart}}</span>
-                     @endif
-                  </a>
-                </li>
-
-                <form class="form-inline">
+                {{-- <form class="form-inline">
                     <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
-                 </form>
-
+                 </form> --}}
+                 <li class="nav-item">
+                  <div class=" pr-1">
+                     <a class="nav-link cart rounded-pill" href="{{url('show_cart')}}">
+                        <i style="color:black" class="bi bi-cart-fill "></i>
+                        @if($cart > 0)
+                        <span class="">{{$cart}}</span>
+                        @endif
+                        
+                     </a>
+                  </div>
+                </li>
+                {{-- <li class="nav-item" style="display: flex;align-items: center;">
+                  <div style="border: 1px solid black;height: 1.5rem; opacity:0.7" ></div>
+                </li> --}}
+                <li class="nav-item">
+                  <div class="pl-1 pr-3">
+                     <a class="nav-link cart rounded-pill" href="{{url('show_order')}}">
+                        <i class="fa-solid fa-truck" style="color: #000000;"></i>
+                        @if($order > 0)
+                        <span class="">{{$order}}</span>
+                        @endif
+                     </a>
+                  </div>
+                </li>
                @if(Route::has('login'))
                @auth
-                  <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle btn-login rounded-pill" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                     {{$name}}
-                   </a>
-                   <div class="dropdown-menu mt-2">
-                      <a class="dropdown-item" href="#">Profile</a>
-                      <div class="dropdown-divider"></div>
-                      <form method="post" action="{{ route('logout') }}" class="inline">
-                        @csrf
-                         <button type="submit" id="logincss" class="dropdown-item">
-                               {{ __('Log Out') }}
-                        </button>
-                      </form>
+               <div class="dropdown">
+                  <a class="btn btn-secondary btn-login font-weight-bold text-uppercase" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                     {{$name}}<i class="bi bi-caret-down-fill"></i>
+                  </a>
+                
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <form method="post" action="{{ route('logout') }}" class="inline">
+                     @csrf
+                      <button type="submit" id="logincss" class="dropdown-item">
+                            {{ __('Log Out') }}
+                     </button>
+                   </form>
+                  </div>
+                </div>
+                  {{-- <li class="nav-item dropdown row" >
+                     <div class="align-items-center">
+                        <a class="nav-link dropdown-toggle btn-login badge rounded-pill " href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                           {{$name}}
+                         </a>
+                         <div class="dropdown-menu mt-2">
+                            <a class="dropdown-item" href="#">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <form method="post" action="{{ route('logout') }}" class="inline">
+                              @csrf
+                               <button type="submit" id="logincss" class="dropdown-item">
+                                     {{ __('Log Out') }}
+                              </button>
+                            </form>
+                           </div>
                      </div>
-
-                  </li>
+                  </li> --}}
                @else
                   <li class="nav-item">
-                    <a class="btn btn-primary" id="logincss" href="{{ route('login') }}">Login</a>
+                    <a class="btn shadow" id="logincss" href="{{ route('login') }}">Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="btn btn-success" href="{{ route('register') }}">Register</a>
+                    <a class="btn shadow" href="{{ route('register') }}">Register</a>
                   </li>
                @endauth
                @endif
-               
              </ul>
           </div>
        </nav>
