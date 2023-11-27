@@ -63,39 +63,62 @@ class HomeController extends Controller
         $related = Product::where('category',$category)->get();
         $comment = Comment::where('product_id',$id)->get();
         $reply = Reply::where('product_id',$id)->get();
-        return view('home.product_details-1',compact('related','comment','reply'));
+        $countRating = $comment->count();
+        // $comment = Comment::paginate(6);
+        return view('home.product_details-1',compact('related','comment','reply','countRating'));
     }
     public function add_comment(Request $request){
         $idProduct=$request->id;
+        $rating = $request->input('rating');
         if(Auth::id()){
-            $comment = new Comment;
-            $comment->name = Auth::user()->name;
-            $comment->user_id = Auth::user()->id;
-            $comment->comment = $request->comment;
-            $comment->product_id =$idProduct;
-            $comment->save();
-            return redirect()->back();
+            if($rating === null || $rating === ''){
+                return redirect()->back()->with('error', 'Vui lòng đánh giá sản phẩm trước khi bình luận.');
+            }else{
+                $comment = new Comment;
+                $comment->name = Auth::user()->name;
+                $comment->user_id = Auth::user()->id;
+                $comment->comment = $request->comment;
+                $comment->rating = $request->rating;
+                $comment->product_id =$idProduct;
+                $comment->save();
+                return redirect()->back()->with('success', 'Bình luận của bạn đã được gửi.');
+            }
+            
 
         }else{
             return redirect()->route('login');
         }
     }
-    public function add_reply(Request $request){
-        $idProduct=$request->id;
-        if(Auth::id()){
-            $reply = new Reply;
-            $reply->name = Auth::user()->name;
-            $reply->user_id = Auth::user()->id;
-            $reply->comment_id = $request->commentId;
-            $reply->reply = $request->reply;
-            $reply->product_id =$idProduct;
-            $reply->save();
-            return redirect()->back();
+    // public function add_reply(Request $request){
+    //     $idProduct=$request->id;
+    //     if(Auth::id()){
+    //         $reply = new Reply;
+    //         $reply->name = Auth::user()->name;
+    //         $reply->user_id = Auth::user()->id;
+    //         $reply->comment_id = $request->commentId;
+    //         $reply->reply = $request->reply;
+    //         $reply->product_id =$idProduct;
+    //         $reply->save();
+    //         return redirect()->back();
 
-        }else{
-            return redirect()->route('login');
-        }
+    //     }else{
+    //         return redirect()->route('login');
+    //     }
+    // }
+    public function add_rating(Request $request){
+    if (Auth::id()) {
+        $productRating = Comment::where('product_id','=',$request->id)->get();
+        // dd($productRating);
+        $userId=Auth::user()->id;
+        $productRating = Comment::where('user_id','=',$userId)->first();
+        $productRating->rating = $request->rating; 
+        $productRating->save();
+        // dd($productRating);
+        return redirect()->back()->with('success', 'Thank you for rating');
+    } else {
+        return redirect()->route('login');
     }
+}
     //Cart page
     public function add_cart(Request $request, $id){
         if(Auth::id()){

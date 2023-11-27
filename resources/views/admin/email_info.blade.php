@@ -27,6 +27,7 @@
                 <h1 style="text-align: center; font-size:25px">Send Email to {{$order->email}}</h1>
 
                 <form action="{{url('send_user_email',$order->id)}}" method="POST">
+                    @csrf
                     <div style="padding-left:35%; padding-top:30px">
                         <label for="">Email Greeting</label>
                         <input style="color:black;" type="text" name="greeting">

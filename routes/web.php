@@ -79,6 +79,7 @@ Route::post('/add_product',[AdminController::class,'add_product']);
 Route::get('/product_details/{id}',[HomeController::class,'product_details']);
 Route::post('/add_comment/{id}',[HomeController::class,'add_comment'])->name('addComment');
 Route::post('/add_reply/{id}',[HomeController::class,'add_reply'])->name('addReply');
+Route::post('/add_rating/{id}',[HomeController::class,'add_rating'])->name('addRating');
 
 //Cart page
 Route::post('/add_cart/{id}',[HomeController::class,'add_cart']);
