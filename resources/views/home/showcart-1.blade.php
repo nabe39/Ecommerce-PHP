@@ -234,8 +234,6 @@
                     }
                     // Xử lý loại bỏ ID sản phẩm khỏi danh sách hoặc các thao tác khác
                 }
-
-               
             });
         }
     </script>

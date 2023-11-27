@@ -67,7 +67,7 @@
                                                             Quantity
                                                         </div>
                                                         <div class="col-md-2 col-lg-2 col-xl-2 font-weight-bold">
-                                                            Price
+                                                            Price $
                                                         </div>
                                                         <div class="col-md-2 col-lg-2 col-xl-2 font-weight-bold">
                                                             Payment Status

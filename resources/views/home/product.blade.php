@@ -63,7 +63,12 @@
              </div>
           </div>
           @endforeach
-          <span style="padding-top: 20px">
-          {!!$product->links()!!}
+          {{-- <span class="comment__content-pagination" style="padding-top: 20px">
+          {!!$product->links()!!} --}}
+          <div class="pagination">
+            <ul class="pagination">
+                {{ $product->links() }}
+            </ul>
+        </div>
          </div>
  </section>
