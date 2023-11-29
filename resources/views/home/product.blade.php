@@ -65,10 +65,10 @@
           @endforeach
           {{-- <span class="comment__content-pagination" style="padding-top: 20px">
           {!!$product->links()!!} --}}
-          <div class="pagination">
+         </div>
+         <div class="pagination">
             <ul class="pagination">
                 {{ $product->links() }}
             </ul>
         </div>
-         </div>
  </section>

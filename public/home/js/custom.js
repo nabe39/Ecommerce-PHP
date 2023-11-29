@@ -48,3 +48,36 @@ function myMap() {
             })
         })
     })
+    document.addEventListener('DOMContentLoaded', function() {
+        var commentForm = document.getElementById('commentForm');
+        var ratingNotification = document.getElementById('ratingNotification');
+
+        commentForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Kiểm tra xem người dùng đã đánh giá hay chưa
+            var ratingValue = document.getElementById('ratingValue').value;
+            var commentValue = document.getElementById('commentValue').value;
+            if (ratingValue === '') {
+                // Hiển thị thông báo yêu cầu đánh giá
+                ratingNotification.style.display = 'block';
+            } else if(commentValue === ''){
+                commentNotification.style.display = 'block'
+            }else {
+                // Gửi biểu mẫu bình luận
+                commentForm.submit();
+            }
+        });
+    });
+    
+//Scroll
+    document.addEventListener("DOMContentLoaded", function (event) {
+        var scrollpos = localStorage.getItem('scrollpos');
+        if (scrollpos) window.scrollTo(0, scrollpos);
+    });
+
+    window.onbeforeunload = function (e) {
+        localStorage.setItem('scrollpos', window.scrollY);
+    };
+
+

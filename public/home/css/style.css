@@ -1276,46 +1276,47 @@ form input[type="submit"]:focus {
   align-items: center;
   margin-bottom: 12px;
 }
+.comment__header-rate > ul > li > span  {
+  width: 20px;
+  margin: 0 10px;
+}
 
 .comment__header-rate i {
   font-size: 1.2rem;
   color: #ffd000;
+  /* margin: 0 20px; */
   margin-right: 12px;
-  margin-left: 6px;
+  /* margin-left: 6px; */
 }
 
 .comment__header-rate-progress {
   display: block;
   width: 300px;
   height: 7px;
-  margin-right: 12px;
+  /* margin-right: 12px; */
   border-radius: 12px;
   background-color: var(--light-color);
   position: relative;
 }
 
-.comment__header-rate-progress::after {
+/* .comment__header-rate-progress::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   border-radius: 12px;
-}
+} */
 
-.comment__header-rate > ul > li:nth-child(1) > .comment__header-rate-progress::after {
-  width: 50%;
-  background-color: rgb(103, 255, 103);
+progress[value]::-webkit-progress-bar {
+  background-color: #fffdfd;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
-
-.comment__header-rate > ul > li:nth-child(2) > .comment__header-rate-progress::after {
-  width: 20%;
-  background-color: rgb(103, 255, 103);
-}
-
-.comment__header-rate > ul > li:nth-child(3) > .comment__header-rate-progress::after {
-  width: 5%;
-  background-color: rgb(103, 255, 103);
+progress[value]::-webkit-progress-value {
+    background-color: rgb(103, 255, 103);
+    border-radius: 20px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
 }
 
 .comment__header-btn {
@@ -1454,3 +1455,50 @@ h1,h2{
   color:  #ffd43b;
   transition: 2ms;
 }
+
+/* carousel */
+.handles svg path{
+  stroke:#e2e2e2!important;
+}
+.dots span{
+  background:#fff!important;
+  opacity:0.5
+}
+.dots span.active{
+  opacity:1
+}
+.PostSlide{max-width:1300px;margin:40px auto;}
+.PostSlide{max-width:1300px;margin:10px auto 40px;}
+.PostSlide .innerContainer .slider{display:flex;width:1280px;overflow-x:hidden;margin:auto;}
+.PostSlide .innerContainer .slider .slide{display:block;background-size: cover!important;background-position: center center!important;min-width:280px;height:420px;margin:0 10px;}
+.PostSlide .innerContainer .slider{position:relative;z-index:2;}
+.PostSlide .innerContainer .handles{display:flex;justify-content:space-between;position:relative;top:-230px;width:110%;cursor:pointer;margin-right:-20px;margin-left:-20px;z-index:4;-webkit-tap-highlight-color:transparent;}
+.PostSlide .dots{display:flex;align-items:center;justify-content:center;gap:10px;position:relative;}
+.PostSlide .dots span{border-radius:10px;background:#CBCBCB;width:6px;height:6px;display:inline-block;cursor:pointer;}
+.PostSlide .slider *{user-drag:none;-webkit-user-drag:none;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;}
+.PostSlide .handles > span{transition:opacity 0.3s;}
+.PostSlide .handles .prev{opacity:0;}
+.PostSlide .handles .next{opacity:1;}
+.PostSlide .handles *{user-select:none;}
+.PostSlide .innerContainer .slider .slide{display:flex!important;flex-direction:column;justify-content:space-between;}
+@media (min-width: 1280px){
+    .PostSlide .innerContainer .slider{width:1280px!important;margin:auto;}
+}
+@media (max-width: 1280px){
+    .PostSlide .innerContainer .handles{width:calc(100% + 30px)!important;margin-left:-15px!important;margin-right:-15px!important;}
+}
+@media (min-width: 960px) and (max-width: 1280px){
+    .PostSlide .innerContainer .slider{width:960px!important;}
+}
+@media (min-width: 960px) and (max-width: 1280px){
+    .PostSlide .innerContainer .slider{width:960px!important;}
+}
+@media (min-width: 640px) and (max-width: 960px){
+    .PostSlide .innerContainer .slider{width:640px!important;}
+}
+@media (max-width: 640px){
+    .PostSlide .innerContainer .slider{width:300px!important;}
+}
+.PostSlide .innerContainer,.PostSlide .slider,.PostSlide .handles,.PostSlide .dots{direction:ltr;}
+
+.PostSlide .innerContainer .slider .slide>div{display:block;background-size: cover!important;background-position: center center!important;min-width:100%;height:100%;border-radius:8px}

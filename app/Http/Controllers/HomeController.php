@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
     public function index(){
-        $product=Product::paginate(6);
+        $product=Product::orderBy('category','desc')->paginate(6);
         return view('home.userpage',compact('product'));
     }
     public function redirect(){
@@ -62,8 +62,10 @@ class HomeController extends Controller
         $request->session()->put('product',$product);
         $related = Product::where('category',$category)->get();
         $comment = Comment::where('product_id',$id)->get();
-        $reply = Reply::where('product_id',$id)->get();
         $countRating = $comment->count();
+        $comment = Comment::where('product_id',$id)->orderBy('rating','desc')->paginate(4);
+        $reply = Reply::where('product_id',$id)->get();
+
         // $comment = Comment::paginate(6);
         return view('home.product_details-1',compact('related','comment','reply','countRating'));
     }
