@@ -12,14 +12,13 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="detail-page/css/styles.css" rel="stylesheet" />
     <!-- bootstrap core css -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
     <!-- font awesome style -->
     <link href="home/css/font-awesome.min.css" rel="stylesheet" />
     <!-- Custom styles for this template -->
+    <link href="detail-page/css/styles.css" rel="stylesheet" />
     <link href="home/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="home/css/responsive.css" rel="stylesheet" />
@@ -41,7 +40,6 @@
                     {{session()->get('message')}}
                 </div>
                 @endif
-
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="product/{{$product->image}}"
                             alt="..." /></div>
@@ -253,46 +251,12 @@
                     </section>
                 </div>
             </header>
-            <div class="comment__content">
-                <ul>
-                    @foreach($comment as $com)
-                    <li class="comment__content-item">
-                        <div>
-                            <img src="https://plus.unsplash.com/premium_photo-1684783848349-fe1d51ab831b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                                alt="" />
-                        </div>
-                        <article class="comment__content-item-text">
-                            <h2 class="text-capitalize">{{$com->name}}</h2>
-                            <div>
-                                <?php
-                                    $rating = $com->rating;
-                                    $subrating = 5-$rating;
-                                    for($i = 0;$i<$rating;$i++){
-                                        echo '<i class="fa-solid fa-star"></i>';
-                                    }
-                                    for($i = 0;$i<$subrating;$i++){
-                                        echo '<i class="fa-regular fa-star" style="color: #ffd43b;"></i>';
-                                    }
-                                ?>
-                            </div>
-                            <p>
-                                {{$com->comment}}
-                            </p>
-                            <small>
-                                <?php
-                                $created_at = $com->created_at;
-                                $timestamp = strtotime($created_at);
-                                $formatted_date = date("d/m/Y", $timestamp);
-                                echo $formatted_date;
-                                ?>
-                            </small>
-                        </article>
-                    </li>
-                    @endforeach
-                    {{ $comment->links() }}
-        </ul>
-    </div>
-    </div>
+            <div class="comment__content" id="data-wrapper">
+                <div class="row">
+                   @include('home.data.comment')
+                </div>
+            </div>
+        </div>
     {{-- endcomment --}}
 
     <!-- footer start -->
@@ -301,6 +265,13 @@
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    {{-- Core kit JS --}}
+    <script src="home/js/carousel.js"></script>
+    <script src="https://kit.fontawesome.com/7ab09b7a32.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js
+    "></script>
     <!-- Core theme JS-->
     <script src="detail-page/js/scripts.js"></script>
     <script src="home/js/jquery-3.4.1.min.js"></script>
@@ -309,12 +280,9 @@
     <!-- bootstrap js -->
     <script src="home/js/bootstrap.js"></script>
     <!-- custom js -->
-    <script src="home/js/carousel.js"></script>
-    <script src="home/js/custom.js" defer></script>
-    <script src="https://kit.fontawesome.com/7ab09b7a32.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {{-- <script src="home/js/custom.js" defer></script> --}}
+    
     <script>
         //reply
         function reply(caller) {

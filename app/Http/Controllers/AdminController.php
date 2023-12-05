@@ -97,7 +97,7 @@ class AdminController extends Controller
     }
     public function order()
     {
-        $order=order::all();
+        $order = Order::all()->sortByDesc('id');
 
         return view('admin.order',compact('order'));
     }

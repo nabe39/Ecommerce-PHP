@@ -51,9 +51,8 @@ class VerifyController extends Controller
             
                         return view('admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
                     }else{
-                        $product=Product::paginate(6);
                         $user = User::where('email',$data['email'])->first();
-                        session(['name' => $user->name]);
+                        session(['user' => $user]);
                         $cart=Cart::where('user_id',$user->id)->count();
                         session(['cart' => $cart]);
                         $order = Order::where('user_id', $user->id)->count();

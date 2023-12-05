@@ -4,21 +4,42 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Comment;
 use App\Models\Reply;
+use App\Models\Comment;
 use App\Models\Product;
+use App\Models\Category;
+use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-    public function index(){
-        $product=Product::orderBy('category','desc')->paginate(6);
-        return view('home.userpage',compact('product'));
+    public function index(Request $request):View{ 
+        $product=Product::get();
+        $categories = Category::get();
+        $results = DB::table('orders')
+        ->select('product_id', DB::raw('COUNT(DISTINCT user_id) as total_buyers'))
+        ->groupBy('product_id')
+        ->orderByDesc('total_buyers')
+        ->take(7)
+        ->get();
+
+        $topSaleProducts = Product::whereIn('id', $results->pluck('product_id'))->get();
+
+        // if ($request->ajax()) {
+        //     return view('home.data.product', compact('product','categories'));
+        // }
+        session(['topSaleProducts' => $topSaleProducts]);
+        session(['categories' => $categories]);
+        session(['product' => $product]);
+        return view('home.userpage');
     }
     public function redirect(){
         $usertype=Auth::user()->usertype;
@@ -43,19 +64,37 @@ class HomeController extends Controller
             return view('home.userpage',compact('product'));
         }
     }
-
-    
-    // public static function countt ($id){
-    //     $cart=Cart::where('user_id',$id)->count();
-    //     $order=Order::where('user_id',$id)->count();
-    //     session(['cart' => $cart]);
-    //     session(['order' => $order]);
-
-    // }
+    //Profile page
+    public function profile(Request $request){
+        $userid = $request->id;
+        $user = User::where('id',$userid)->first();
+        session(['user' => $user]);
+        return view('home.profile');
+    }
+    public function editProfile(Request $request){
+        $userid = $request->id;
+        $user = User::where('id',$userid)->first();
+        $user->name=$request->name;
+        $user->phone=$request->phone;
+        $user->address=$request->address;
+        $user->birthday=$request->birthday;
+        $user->email=$request->email;
+        $image = $request->file('image');
+       
+        if($image) {
+                File::delete(public_path('profilePhoto/' . $user->profile_photo_path));
+                $imagename = $userid.'.'.$image->getClientOriginalExtension();
+                $request->image->move('profilePhoto',$imagename);
+                $user->profile_photo_path = $imagename;           
+        }
+        
+        $user->save();
+        return redirect()->back()->with('success','Update successfully');
+    }
 
     
     //Detail page
-    public function product_details(Request $request){
+    public function product_details(Request $request):View{
         $id=$request->id;
         $product=Product::where('id',$id)->first();
         $category= $product->category;
@@ -64,6 +103,9 @@ class HomeController extends Controller
         $comment = Comment::where('product_id',$id)->get();
         $countRating = $comment->count();
         $comment = Comment::where('product_id',$id)->orderBy('rating','desc')->paginate(4);
+        if ($request->ajax()) {
+            return view('home.data.comment', compact('comment'));
+        }
         $reply = Reply::where('product_id',$id)->get();
 
         // $comment = Comment::paginate(6);
@@ -252,7 +294,22 @@ class HomeController extends Controller
     //Home page
     public function product_search(Request $request){
         $search_text=$request->search;
-        $product=Product::where('title','LIKE',"%$search_text%")->orwhere('category','LIKE',"%$search_text%")->paginate(6);
-        return view('home.userpage',compact('product'));
+        // $categories = Category::get();
+        // $product=Product::orderBy('category','desc')->paginate(6);
+        // $results = DB::table('orders')
+        // ->select('product_id', DB::raw('COUNT(DISTINCT user_id) as total_buyers'))
+        // ->groupBy('product_id')
+        // ->orderByDesc('total_buyers')
+        // ->take(7)
+        // ->get();
+
+        // $topSaleProducts = Product::whereIn('id', $results->pluck('product_id'))->get();
+        $product=Product::where('title','LIKE',"%$search_text%")->orwhere('category','LIKE',"%$search_text%")->get();
+        session(['product' => $product]);
+
+        // if ($request->ajax()) {
+        //     return view('home.data.product');
+        // }
+        return view('home.userpage');
     }
 }

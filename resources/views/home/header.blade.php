@@ -1,6 +1,6 @@
 <header class="header_section">
    <?php
-   $name=session('name');
+   $user=session('user');
    $cart=session('cart');
    $order=session('orderCount')
    ?>
@@ -16,7 +16,7 @@
                    <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="product.html">Products</a>
+                   <a class="nav-link" href="">Products</a>
                 </li>
                 <li class="nav-item">
                    <a class="nav-link" href="blog_list.html">Blog</a>
@@ -61,15 +61,15 @@
                @auth
                <div class="dropdown">
                   <a class="btn btn-secondary btn-login font-weight-bold text-uppercase" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                     {{$name}}<i class="bi bi-caret-down-fill"></i>
+                     {{$user->name}}<i class="bi bi-caret-down-fill"></i>
                   </a>
                 
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="{{ route('getProfile', [$user->id]) }}">Profile</a>
                     <form method="post" action="{{ route('logout') }}" class="inline">
                      @csrf
                       <button type="submit" id="logincss" class="dropdown-item">
-                            {{ __('Log Out') }}
+                            {{('Log Out') }}
                      </button>
                    </form>
                   </div>

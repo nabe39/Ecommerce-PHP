@@ -15,7 +15,7 @@ class PostSlider {
 
         this.sLiderWidth = this.slider.clientWidth;
         this.oneSLideWidth = this.container.querySelector('.slide:nth-child(2)').clientWidth;
-        console.log(this.oneSLideWidth);
+        // console.log(this.oneSLideWidth);
         this.sildesPerPage = Math.trunc(this.sLiderWidth / this.oneSLideWidth);
         this.slideMargin = ((this.sLiderWidth - (this.sildesPerPage * this.oneSLideWidth)) / (this.sildesPerPage * 2)).toFixed(5);
         this.changeSlidesMargins();
@@ -59,7 +59,7 @@ class PostSlider {
 
 
     scrollToPosition(position, smooth =true) {
-        console.log('Scrolling to position:', position);
+        // console.log('Scrolling to position:', position);
         const currentPosition = this.slider.scrollLeft;
         const newPosition = currentPosition + position;
 
@@ -69,7 +69,7 @@ class PostSlider {
             behavior: smooth ? 'smooth' : 'instant'
         });
 
-        console.log('Current position - New position:', currentPosition - newPosition);
+        // console.log('Current position - New position:', currentPosition - newPosition);
 
         setTimeout(() => {
             this.snapToNearestSlide();
@@ -108,7 +108,7 @@ class PostSlider {
 
         const currentPosition = this.slider.scrollLeft;
         const nearestLeftScroll = Math.round(currentPosition / (this.oneSLideWidth+(this.slideMargin*2))) * (this.oneSLideWidth+(this.slideMargin*2));
-        console.log(nearestLeftScroll);
+        // console.log(nearestLeftScroll);
         this.slider.scrollTo({
             left:  nearestLeftScroll,
             behavior: 'smooth'
@@ -146,7 +146,7 @@ class PostSlider {
                 isDragging = false;
                 const currentPosition = this.slider.scrollLeft;
                 const nearestLeftScroll = Math.round(currentPosition / (this.oneSLideWidth+(this.slideMargin*2))) * (this.oneSLideWidth+(this.slideMargin*2));
-                console.log(nearestLeftScroll);
+                // console.log(nearestLeftScroll);
                 this.slider.scrollTo({
                     left:  nearestLeftScroll,
                     behavior: 'smooth'
@@ -166,8 +166,8 @@ class PostSlider {
             const scrollLeft = this.slider.scrollLeft;
             const currentIndex = Math.trunc((Math.abs(scrollLeft) + 2) / this.slider.clientWidth);
 
-            console.log('Scroll Left:', scrollLeft);
-            console.log('Current Index:', currentIndex);
+            // console.log('Scroll Left:', scrollLeft);
+            // console.log('Current Index:', currentIndex);
 
             for (let i = 0; i < this.dots.length; i++) {
                 this.dots[i].classList.remove('active');
