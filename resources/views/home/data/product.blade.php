@@ -16,7 +16,7 @@
          <div class="col-12">
             <button class="tag-button active" data-tag="all"> All </button>
             @foreach($categories as $category)
-            <button class="tag-button" data-tag="{{$category->category_name}}">{{$category->category_name}}</button>
+            <button class="tag-button text-capitalize" data-tag="{{$category->category_name}}">{{$category->category_name}}</button>
             <!-- Add more buttons for your tags here -->
             @endforeach
          </div>

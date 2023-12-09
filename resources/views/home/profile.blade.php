@@ -21,6 +21,7 @@
     <!-- Custom styles for this template -->
     <link href="home/css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="profile/style.css">
+    <link rel="stylesheet" href="home/css/style.css">
     <!-- responsive style -->
     <link href="home/css/responsive.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
