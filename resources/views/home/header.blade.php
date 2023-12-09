@@ -62,8 +62,13 @@
                <div class="dropdown">
                   <a class="" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                      <div class="img-account-profile-header rounded-circle mb-2">
+                        @if($user->profile_photo_path == null)
+                        <img class="imageProfile" src="profilePhoto/avatar-trang-4.jpg"
+                            alt="">
+                        @else
                         <img class="imageProfile"
                         src="profilePhoto/{{$user->profile_photo_path}}" alt="">
+                        @endif
                     </div>
                     {{-- <i class="bi bi-caret-down-fill"></i> --}}
                   </a>
