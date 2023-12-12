@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\User;
 use App\Notifications\SendEmailNotification;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
@@ -18,6 +19,22 @@ use Illuminate\Support\Facades\Notification;
 
 class AdminController extends Controller
 {
+    public function index(){
+        $total_product =product::all()->count();
+        $total_order =order::all()->count();
+        $total_user =User::all()->count();
+
+        $order=order::all();
+        $total_revenue=0;
+        foreach($order as $order)
+        {
+            $total_revenue=$total_revenue+ $order->price;
+        }
+
+        $total_delivered= order::where('delivery_status','=','delivered')->get()->count();
+        $total_processing= order::where('delivery_status','=','processing')->get()->count();
+        return view('admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
+    }
     public function view_category()
     {
         $data = category::all();

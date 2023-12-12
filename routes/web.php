@@ -22,6 +22,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/', [AdminController::class,'index'])->name('admin');
 
 Route::middleware([
     'auth:sanctum',

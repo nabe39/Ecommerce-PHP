@@ -35,21 +35,25 @@ class VerifyController extends Controller
                 if($userverify!== null){
                     $usertype=Auth::user()->usertype;
                     if($usertype == '1'){
-                        $total_product =product::all()->count();
-                        $total_order =order::all()->count();
-                        $total_user =user::all()->count();
+                        // $user = User::where('email',$data['email'])->first();
+                        // dd($user);
+                        // session(['user' => $user]);
+                        // $total_product =product::all()->count();
+                        // $total_order =order::all()->count();
+                        // $total_user =user::all()->count();
             
-                        $order=order::all();
-                        $total_revenue=0;
-                        foreach($order as $order)
-                        {
-                            $total_revenue=$total_revenue+ $order->price;
-                        }
+                        // $order=order::all();
+                        // $total_revenue=0;
+                        // foreach($order as $order)
+                        // {
+                        //     $total_revenue=$total_revenue+ $order->price;
+                        // }
             
-                        $total_delivered= order::where('delivery_status','=','delivered')->get()->count();
-                        $total_processing= order::where('delivery_status','=','processing')->get()->count();
+                        // $total_delivered= order::where('delivery_status','=','delivered')->get()->count();
+                        // $total_processing= order::where('delivery_status','=','processing')->get()->count();
             
-                        return view('admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
+                        // return view('admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
+                        return redirect(route('admin'));
                     }else{
                         $user = User::where('email',$data['email'])->first();
                         session(['user' => $user]);
