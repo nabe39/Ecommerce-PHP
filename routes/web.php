@@ -22,6 +22,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 */
 
 Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/', [AdminController::class,'index'])->name('admin');
 
 Route::middleware([
     'auth:sanctum',
@@ -48,6 +49,10 @@ Route::post('register',[VerifyController::class,'createRegister'])->name('inputr
 Route::get('/redirect',[HomeController::class,'redirect']);
 
 //Features
+
+//Profile
+Route::get('/profile/{id}',[HomeController::class,'profile'])->name('getProfile');
+Route::post('/profile/{id}',[HomeController::class,'editProfile'])->name('editProfile');
 
 //Admin
 
@@ -76,7 +81,7 @@ Route::post('/add_product',[AdminController::class,'add_product']);
 //Home
 
 //Detail page
-Route::get('/product_details/{id}',[HomeController::class,'product_details']);
+Route::get('/product_details/{id}',[HomeController::class,'product_details'])->name('showProductDetail');
 Route::post('/add_comment/{id}',[HomeController::class,'add_comment'])->name('addComment');
 Route::post('/add_reply/{id}',[HomeController::class,'add_reply'])->name('addReply');
 Route::post('/add_rating/{id}',[HomeController::class,'add_rating'])->name('addRating');

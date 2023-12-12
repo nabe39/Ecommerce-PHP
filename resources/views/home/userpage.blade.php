@@ -25,6 +25,11 @@
 </head>
 
 <body>
+    <?php
+    $topSaleProducts =session('topSaleProducts');
+    $categories =session('categories');
+    $product =session('product');
+    ?>
     <div class="hero_area">
         <!-- header section strats -->
         @include('home.header')
@@ -43,30 +48,18 @@
     <!-- end arrival section -->
 
     <!-- product section -->
-    @include('home.product')
+    {{-- top product --}}
+    @include('home.data.product_top')
+    {{-- our product --}}
+    @include('home.data.product')
     <!-- end product section -->
 
-
-   
-
-   
     <!-- footer start -->
     @include('home.footer')
     <!-- footer end -->
    
     <!-- jQery -->
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function (event) {
-            var scrollpos = localStorage.getItem('scrollpos');
-            if (scrollpos) window.scrollTo(0, scrollpos);
-        });
-
-        window.onbeforeunload = function (e) {
-            localStorage.setItem('scrollpos', window.scrollY);
-        };
-
-    </script>
 
     <script src="home/js/jquery-3.4.1.min.js"></script>
     <!-- popper js -->
@@ -75,9 +68,12 @@
     <script src="home/js/bootstrap.js"></script>
 
     <!-- custom js -->
+    <script src="home/js/carousel.js"></script>
     <script src="home/js/custom.js"></script>
 
     <script src="https://kit.fontawesome.com/7ab09b7a32.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>   
 </body>
 
 </html>

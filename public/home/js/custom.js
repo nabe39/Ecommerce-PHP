@@ -17,34 +17,127 @@ function myMap() {
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 }
 
-//Rating stars
+//Scroll
+    // document.addEventListener("DOMContentLoaded", function (event) {
+    //     var scrollpos = localStorage.getItem('scrollpos');
+    //     if (scrollpos) window.scrollTo(0, scrollpos);
+    // });
 
-    //Display rating box and btn
-    const btn_rating = document.querySelector(".btn_rating_active");
-    const rating_box = document.querySelector(".rating-box");
-    const rating_submit = document.querySelector("#ratingBtn")
-    btn_rating.addEventListener("click",()=>{
-        btn_rating.classList.add('btn_rating_disabled');
-        btn_rating.classList.remove('btn_rating_active');
-        rating_box.classList.add('rating-active');
-        rating_box.classList.remove('rating-disabled');
-        rating_submit.classList.remove('disabled');
-    })
+    // window.onbeforeunload = function (e) {
+    //     localStorage.setItem('scrollpos', window.scrollY);
+    // };
 
-    //Select all elements with 'i' tag and store them in a NodeList called "stars"
-    const stars = document.querySelectorAll(".stars i");
-    const ratingValueInput = document.querySelector("#ratingValue");
-    //Loop through 'stars' Nodelist
-    var selectRating;
-    stars.forEach((star,index1) => {
-        star.addEventListener("click",()=>{
-            selectRating = index1+1;
-            console.log(index1+1)
-            console.log("select: "+selectRating);
-            ratingValueInput.value = selectRating.toString();
-            // Loop through the "stars" NodeList again
-            stars.forEach((star,index2)=>{
-                index1 >= index2 ? star.classList.add("active"): star.classList.remove('active')
-            })
+    $(window).on('hashchange', function() {
+        if (window.location.hash) {
+            var page = window.location.hash.replace('#', '');
+            if (page == Number.NaN || page <= 0) {
+                return false;
+            }else{
+                getData(page);
+            }
+        }
+    });
+    $(document).ready(function()
+    {
+        $(document).on('click', '.pagination a',function(event)
+        {
+            $('li').removeClass('active');
+            $(this).parent('li').addClass('active');
+            event.preventDefault();
+            
+            var myurl = $(this).attr('href');
+            var page=$(this).attr('href').split('page=')[1];
+            getData(page);
+        });
+    });
+    function getData(page) {
+        var element = document.getElementById('idProduct')
+        var pId = window.location.pathname;
+        console.log(pId);
+        // var productId = element.getAttribute('data-product-id')
+        var url = pId + '?page=' + page;
+        $.ajax({
+            url: url,
+            type: "get",
+            datatype: "html",
         })
-    })
+        .done(function(data){
+            $("#data-wrapper").empty().html("<div class='row'>" + data + "</div>");
+            location.hash = page;
+        })
+        .fail(function(jqXHR, ajaxOptions, thrownError){
+              alert('No response from server');
+        });
+    }
+
+// categories
+document.addEventListener("DOMContentLoaded", function () {
+    const postBlocksContainer = document.querySelector(".posts-container");
+    const tagButtons = document.querySelectorAll(".tag-button");
+    const loadMoreButton = document.getElementById("loadMoreButton");
+    const postBlocks = document.querySelectorAll(".post");
+
+    let selectedTag = "all"; // Initially, "all" tag is selected
+    let currentPage = 1;
+    const itemsPerPage = 3;
+
+    function filterPostsByTag(tag) {
+        selectedTag = tag;
+        currentPage = 1; // Reset current page when changing tags
+
+        // Clear existing posts in the container
+        postBlocksContainer.innerHTML = '';
+
+        const filteredPostBlocks = Array.from(postBlocks).filter((block) => {
+            const tags = block.getAttribute("data-tags").split(",");
+            return selectedTag === "all" || tags.includes(selectedTag);
+        });
+
+        showPostsForPage(currentPage, filteredPostBlocks);
+        updateLoadMoreButton(filteredPostBlocks);
+    }
+
+    function showPostsForPage(pageNumber, postBlocks) {
+        const startIndex = (pageNumber - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, postBlocks.length);
+
+        for (let i = startIndex; i < endIndex; i++) {
+            postBlocksContainer.appendChild(postBlocks[i].cloneNode(true));
+        }
+    }
+
+    function updateLoadMoreButton(filteredPostBlocks) {
+        const visiblePostCount = filteredPostBlocks.length;
+
+        if (visiblePostCount <= currentPage * itemsPerPage) {
+            loadMoreButton.style.display = "none";
+        } else {
+            loadMoreButton.style.display = "block";
+        }
+    }
+
+    function loadMorePosts() {
+        currentPage++;
+        const filteredPostBlocks = Array.from(postBlocks).filter((block) => {
+            const tags = block.getAttribute("data-tags").split(",");
+            return selectedTag === "all" || tags.includes(selectedTag);
+        });
+
+        showPostsForPage(currentPage, filteredPostBlocks);
+        updateLoadMoreButton(filteredPostBlocks);
+    }
+
+    tagButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            tagButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+            const tag = button.getAttribute("data-tag");
+            filterPostsByTag(tag);
+        });
+    });
+
+    loadMoreButton.addEventListener("click", loadMorePosts);
+
+    // Initial setup
+    filterPostsByTag(selectedTag);
+});

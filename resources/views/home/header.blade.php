@@ -1,6 +1,6 @@
 <header class="header_section">
    <?php
-   $name=session('name');
+   $user=session('user');
    $cart=session('cart');
    $order=session('orderCount')
    ?>
@@ -12,16 +12,16 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item nav-header active">
                    <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="product.html">Products</a>
+                <li class="nav-item nav-header">
+                   <a class="nav-link" href="">Products</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item nav-header">
                    <a class="nav-link" href="blog_list.html">Blog</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item nav-header dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">More<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                      <li><a href="about.html">About us</a></li>
@@ -33,7 +33,7 @@
                     <i class="fa fa-search" aria-hidden="true"></i>
                     </button>
                  </form> --}}
-                 <li class="nav-item">
+                 <li class="nav-item nav-header">
                   <div class=" pr-1">
                      <a class="nav-link cart rounded-pill" href="{{url('show_cart')}}">
                         <i style="color:black" class="bi bi-cart-fill "></i>
@@ -44,10 +44,10 @@
                      </a>
                   </div>
                 </li>
-                {{-- <li class="nav-item" style="display: flex;align-items: center;">
+                {{-- <li class="nav-item nav-header" style="display: flex;align-items: center;">
                   <div style="border: 1px solid black;height: 1.5rem; opacity:0.7" ></div>
                 </li> --}}
-                <li class="nav-item">
+                <li class="nav-item nav-header">
                   <div class="pl-1 pr-3">
                      <a class="nav-link cart rounded-pill" href="{{url('show_order')}}">
                         <i class="fa-solid fa-truck" style="color: #000000;"></i>
@@ -60,21 +60,31 @@
                @if(Route::has('login'))
                @auth
                <div class="dropdown">
-                  <a class="btn btn-secondary btn-login font-weight-bold text-uppercase" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                     {{$name}}<i class="bi bi-caret-down-fill"></i>
+                  <a class="" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                     <div class="img-account-profile-header rounded-circle mb-2">
+                        @if($user->profile_photo_path == null)
+                        <img class="imageProfile" src="profilePhoto/avatar-trang-4.jpg"
+                            alt="">
+                        @else
+                        <img class="imageProfile"
+                        src="profilePhoto/{{$user->profile_photo_path}}" alt="">
+                        @endif
+                    </div>
+                    {{-- <i class="bi bi-caret-down-fill"></i> --}}
                   </a>
+                  
                 
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="{{ route('getProfile', [$user->id]) }}">Profile</a>
                     <form method="post" action="{{ route('logout') }}" class="inline">
                      @csrf
                       <button type="submit" id="logincss" class="dropdown-item">
-                            {{ __('Log Out') }}
+                            {{('Log Out') }}
                      </button>
                    </form>
                   </div>
                 </div>
-                  {{-- <li class="nav-item dropdown row" >
+                  {{-- <li class="nav-item nav-header dropdown row" >
                      <div class="align-items-center">
                         <a class="nav-link dropdown-toggle btn-login badge rounded-pill " href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                            {{$name}}
