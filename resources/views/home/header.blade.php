@@ -13,10 +13,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav">
                 <li class="nav-item nav-header active">
-                   <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
+                   <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item nav-header">
-                   <a class="nav-link" href="">Products</a>
+                   <a class="nav-link" onclick="handleClickScroll(event)" href="">Products</a>
                 </li>
                 <li class="nav-item nav-header">
                    <a class="nav-link" href="blog_list.html">Blog</a>
@@ -115,3 +115,11 @@
        </nav>
     </div>
  </header>
+
+ <script>
+   function handleClickScroll (e) {
+      e.preventDefault();
+      var targetElement = document.getElementById('our_products');
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+   }
+ </script>

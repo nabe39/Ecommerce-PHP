@@ -123,6 +123,12 @@ public function makeverify(Request $request){
         return redirect()->back()->with('error', 'OTP wrong. Please try again.');
     }
 }
+public function logout(Request $request){
+    Auth::logout();
+
+    return redirect(route('home'));
+}
 
 }
+
 

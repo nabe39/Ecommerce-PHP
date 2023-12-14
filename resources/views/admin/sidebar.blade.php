@@ -29,16 +29,14 @@
               </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-onepassword  text-info"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
-              </div>
-            </a>
+            <div href="" class="dropdown-item preview-item">
+                <form method="post" action="{{ route('logout') }}" class="inline">
+                 @csrf
+                  <button type="submit" id="logincss" class="dropdown-item">
+                        {{('Log Out') }}
+                 </button>
+               </form>
+            </div>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item preview-item">
               <div class="preview-thumbnail">

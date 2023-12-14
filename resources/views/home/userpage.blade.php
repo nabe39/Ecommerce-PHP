@@ -25,6 +25,7 @@
 </head>
 
 <body>
+    <div hidden id="scrollButton" onclick="handleClickScroll()" style="z-index: 1000; position: fixed; width: 50px; height: 50px; border-radius: 50%; right: 5%; bottom: 5%; border: 1px solid gray; display: grid; place-items: center; cursor: pointer; background-color: white"><i style="font-size: 24px" class="bi bi-arrow-up"></i></div>
     <?php
     $topSaleProducts =session('topSaleProducts');
     $categories =session('categories');
@@ -77,3 +78,18 @@
 </body>
 
 </html>
+
+<script>
+   function handleClickScroll () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+   }
+        window.onscroll = function (){
+            var scrollButton = document.getElementById("scrollButton");
+            var scrollPosition = window.pageYOffset;
+            if(scrollPosition > 100) {
+                scrollButton.removeAttribute("hidden")
+            } else {
+                scrollButton.setAttribute("hidden", true)
+            }
+        }
+</script>
