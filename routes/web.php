@@ -25,15 +25,15 @@ Route::get('/orderpiece.com', [HomeController::class,'index'])->name('home');
 Route::get('/', [AdminController::class,'index'])->name('admin');
 Route::post('/', [VerifyController::class,'logout'])->name('logout');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
 
 // Verify
 Route::get('/email/verify',[VerifyController::class,'notice'])->name('verification.notice');

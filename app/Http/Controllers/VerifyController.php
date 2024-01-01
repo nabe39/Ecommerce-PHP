@@ -35,6 +35,8 @@ class VerifyController extends Controller
                 if($userverify!== null){
                     $usertype=Auth::user()->usertype;
                     if($usertype == '1'){
+                        $user = User::where('email',$data['email'])->first();
+                        session(['user' => $user]);
                         // $user = User::where('email',$data['email'])->first();
                         // dd($user);
                         // session(['user' => $user]);
@@ -125,7 +127,8 @@ public function makeverify(Request $request){
 }
 public function logout(Request $request){
     Auth::logout();
-
+    session(['orderCount' => 0]);
+    session(['cart' => 0]);
     return redirect(route('home'));
 }
 

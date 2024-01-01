@@ -1,3 +1,6 @@
+<?php
+$user = session('user');  
+?>
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
       <a class="sidebar-brand brand-logo" href="{{route('admin')}}"><img src="images/logo.png" alt="logo" style="margin: 0" /></a>
@@ -8,28 +11,27 @@
         <div class="profile-desc">
           <div class="profile-pic">
             <div class="count-indicator">
-              <img class="img-xs rounded-circle " src="admin/assets/images/faces/face15.jpg" alt="">
+              @if($user->profile_photo_path == null)
+              <img class="img-xs rounded-circle" src="profilePhoto/avatar-trang-4.jpg"
+                  alt="">
+              @else
+              <img class="img-xs rounded-circle"
+              src="profilePhoto/{{$user->profile_photo_path}}" alt="">
+              @endif
               <span class="count bg-success"></span>
             </div>
             <div class="profile-name">
-              <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-              <span>Gold Member</span>
+              <h5 class="mb-0 font-weight-normal ">{{$user->name}}</h5>
             </div>
           </div>
           <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
           <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-            <a href="#" class="dropdown-item preview-item">
+            <div href="" class="dropdown-item preview-item">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
                   <i class="mdi mdi-settings text-primary"></i>
                 </div>
               </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <div href="" class="dropdown-item preview-item">
                 <form method="post" action="{{ route('logout') }}" class="inline">
                  @csrf
                   <button type="submit" id="logincss" class="dropdown-item">
@@ -38,16 +40,7 @@
                </form>
             </div>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-calendar-today text-success"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
-              </div>
-            </a>
+
           </div>
         </div>
       </li>
@@ -56,7 +49,7 @@
       </li>
 
       <li class="nav-item menu-items">
-        <a class="nav-link" href="{{url('/redirect')}}">
+        <a class="nav-link" href="{{url('/')}}">
           <span class="menu-icon">
             <i class="mdi mdi-speedometer"></i>
           </span>

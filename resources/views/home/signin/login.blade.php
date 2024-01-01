@@ -19,9 +19,6 @@
                     <div class="row">
                         <div class="col-md-5 detail-part">
                             <h1>OrderPiece</h1>
-                            <p>Please use your credentials to login.
-                                If you are not a member <br>
-                                <a class="text-dark" href="{{url('register')}}">Please Register</a></p>
                         </div>
                         <div class="col-md-7 logn-part">
                             <div class="row">
@@ -47,10 +44,10 @@
                                         </div>
                                         @endif
                                         <div class="row form-footer">
-                                            <div class="col-md-6 forget-paswd">
-                                                <a href="{{url('/')}}">Forget Password ?</a>
+                                            <div class="col-md-7 forget-paswd">
+                                                <a class="text-primary" href="{{url('register')}}">Don't have an account?</a></p>
                                             </div>
-                                            <div class="col-md-6 button-div">
+                                            <div class="col-md-5 button-div ">
                                                 <button class="btn btn-primary">Login</button>
                                             </div>
                                         </div>

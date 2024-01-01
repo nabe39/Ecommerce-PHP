@@ -1,10 +1,10 @@
 @foreach($order as $order) 
                                                 <hr class="my-4">
                                                 <div class="row mb-4 d-flex justify-content-between align-items-center">
-                                                    <div>
+                                                    {{-- <div>
                                                         <input name="checkbox[]" type="checkbox" class="checkbox"
                                                             value=""></input>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col">
                                                         {{-- <h6 class="text-muted">{{$cart->category}}</h6> --}}
                                                         <h6 class="text-black mb-0">{{$order->product_title}}</h6>

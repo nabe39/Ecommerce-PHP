@@ -76,7 +76,7 @@
                 
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('getProfile', [$user->id]) }}">Profile</a>
-                    <form method="post" action="{{ route('logout') }}" class="inline">
+                    <form method="post" action="{{route('logout') }}" class="inline">
                      @csrf
                       <button type="submit" id="logincss" class="dropdown-item">
                             {{('Log Out') }}
