@@ -13,16 +13,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav">
                 <li class="nav-item nav-header active">
-                   <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
+                   <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item nav-header">
-                   <a class="nav-link" href="">Products</a>
+                   <a class="nav-link">Products</a>
                 </li>
                 <li class="nav-item nav-header">
-                   <a class="nav-link" href="blog_list.html">Blog</a>
+                   <a class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item nav-header dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">More<span class="caret"></span></a>
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">More<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                      <li><a href="about.html">About us</a></li>
                      <li><a href="testimonial.html">Contact</a></li>
@@ -76,7 +76,7 @@
                 
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('getProfile', [$user->id]) }}">Profile</a>
-                    <form method="post" action="{{ route('logout') }}" class="inline">
+                    <form method="post" action="{{route('logout') }}" class="inline">
                      @csrf
                       <button type="submit" id="logincss" class="dropdown-item">
                             {{('Log Out') }}
@@ -115,3 +115,11 @@
        </nav>
     </div>
  </header>
+
+ <script>
+   function handleClickScroll (e) {
+      e.preventDefault();
+      var targetElement = document.getElementById('our_products');
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+   }
+ </script>

@@ -41,29 +41,29 @@ class HomeController extends Controller
         session(['product' => $product]);
         return view('home.userpage');
     }
-    public function redirect(){
-        $usertype=Auth::user()->usertype;
-        if($usertype == '1'){
-            $total_product =product::all()->count();
-            $total_order =order::all()->count();
-            $total_user =user::all()->count();
+    // public function redirect(){
+    //     $usertype=Auth::user()->usertype;
+    //     if($usertype == '1'){
+    //         $total_product =product::all()->count();
+    //         $total_order =order::all()->count();
+    //         $total_user =user::all()->count();
 
-            $order=order::all();
-            $total_revenue=0;
-            foreach($order as $order)
-            {
-                $total_revenue=$total_revenue+ $order->price;
-            }
+    //         $order=order::all();
+    //         $total_revenue=0;
+    //         foreach($order as $order)
+    //         {
+    //             $total_revenue=$total_revenue+ $order->price;
+    //         }
 
-            $total_delivered= order::where('delivery_status','=','delivered')->get()->count();
-            $total_processing= order::where('delivery_status','=','processing')->get()->count();
+    //         $total_delivered= order::where('delivery_status','=','delivered')->get()->count();
+    //         $total_processing= order::where('delivery_status','=','processing')->get()->count();
 
-            return view('admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
-        }else{
-            $product=Product::paginate(6);
-            return view('home.userpage',compact('product'));
-        }
-    }
+    //         return view('admin.home', compact('total_product','total_order','total_user','total_revenue','total_delivered','total_processing'));
+    //     }else{
+    //         $product=Product::paginate(6);
+    //         return view('home.userpage',compact('product'));
+    //     }
+    // }
     //Profile page
     public function profile(Request $request){
         $userid = $request->id;

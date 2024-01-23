@@ -90,8 +90,8 @@
                                                 </div>
 
                                                 <div class="pt-5">
-                                                    <form action="{{url('/')}}" method="get">
-                                                        <h6 class="mb-0"><a href="{{url('/')}}" class="text-body"><i
+                                                    <form action="{{route('home')}}" method="get">
+                                                        <h6 class="mb-0"><a href="{{route('home')}}" class="text-body"><i
                                                                     class="fas fa-long-arrow-alt-left me-2"></i> Back to
                                                                 shop</a>
                                                         </h6>
