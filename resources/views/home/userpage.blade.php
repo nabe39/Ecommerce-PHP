@@ -52,7 +52,10 @@
     {{-- top product --}}
     @include('home.data.product_top')
     {{-- our product --}}
-    @include('home.data.product')
+    <div id="product">
+        @include('home.data.product')
+    </div>
+
     <!-- end product section -->
 
     <!-- footer start -->

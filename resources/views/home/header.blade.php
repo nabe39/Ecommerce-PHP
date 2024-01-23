@@ -16,13 +16,13 @@
                    <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item nav-header">
-                   <a class="nav-link" onclick="handleClickScroll(event)" href="">Products</a>
+                   <a class="nav-link">Products</a>
                 </li>
                 <li class="nav-item nav-header">
-                   <a class="nav-link" href="blog_list.html">Blog</a>
+                   <a class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item nav-header dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">More<span class="caret"></span></a>
+                  <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">More<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                      <li><a href="about.html">About us</a></li>
                      <li><a href="testimonial.html">Contact</a></li>
