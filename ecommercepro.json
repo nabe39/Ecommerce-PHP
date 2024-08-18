@@ -1,0 +1,174 @@
+[
+{"type":"header","version":"5.2.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"ecommercepro"},
+{"type":"table","name":"carts","database":"ecommercepro","data":
+[
+{"id":"152","created_at":"2023-12-02 03:12:53","updated_at":"2023-12-02 03:12:53","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","product_title":"Puma Cotton Bag","price":"6","quantity":"1","image":"1697951927.png","Product_id":"10","user_id":"79"},
+{"id":"154","created_at":"2023-12-05 06:15:17","updated_at":"2023-12-05 06:15:17","name":"admin","email":"admin@gmail.com","phone":"0934034949","address":"admin@gmail.com","product_title":"Good vibes only shirt","price":"15","quantity":"1","image":"1697951691.png","Product_id":"2","user_id":"1"},
+{"id":"156","created_at":"2023-12-09 09:39:44","updated_at":"2023-12-09 09:39:44","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","product_title":"Good vibes only shirt","price":"15","quantity":"1","image":"1697951691.png","Product_id":"2","user_id":"2"},
+{"id":"157","created_at":"2023-12-12 08:50:36","updated_at":"2023-12-12 08:50:36","name":"duc vo","email":"vohongduc000@gmail.com","phone":"0911118111","address":"San Francisco, CA","product_title":"Good vibes only shirt","price":"15","quantity":"1","image":"1697951691.png","Product_id":"2","user_id":"79"}
+]
+}
+,{"type":"table","name":"categories","database":"ecommercepro","data":
+[
+{"id":"1","category_name":"shirt","created_at":"2023-10-15 01:20:33","updated_at":"2023-10-15 01:20:33"},
+{"id":"2","category_name":"bag","created_at":"2023-10-15 01:20:39","updated_at":"2023-10-15 01:20:39"},
+{"id":"4","category_name":"book","created_at":"2023-10-15 01:20:52","updated_at":"2023-10-15 01:20:52"},
+{"id":"5","category_name":"mobile","created_at":"2023-10-15 01:20:57","updated_at":"2023-10-15 01:20:57"},
+{"id":"6","category_name":"laptop","created_at":"2023-10-15 01:24:57","updated_at":"2023-10-15 01:24:57"},
+{"id":"8","category_name":"Cà phê","created_at":"2024-08-18 04:23:06","updated_at":"2024-08-18 04:23:06"},
+{"id":"9","category_name":"Trà","created_at":"2024-08-18 04:23:14","updated_at":"2024-08-18 04:23:14"},
+{"id":"10","category_name":"Nước Ép","created_at":"2024-08-18 04:23:28","updated_at":"2024-08-18 04:23:28"},
+{"id":"11","category_name":"Sinh tố","created_at":"2024-08-18 04:23:34","updated_at":"2024-08-18 04:23:34"},
+{"id":"12","category_name":"Sữa","created_at":"2024-08-18 04:23:38","updated_at":"2024-08-18 04:23:38"},
+{"id":"13","category_name":"Nước lon","created_at":"2024-08-18 04:23:47","updated_at":"2024-08-18 04:23:47"}
+]
+}
+,{"type":"table","name":"comments","database":"ecommercepro","data":
+[
+{"id":"1","name":"duc vo","comment":"test goodvipes","rating":"4","user_id":"79","product_id":"2","created_at":"2023-11-27 12:10:39","updated_at":"2023-11-27 12:10:39"},
+{"id":"2","name":"duc vo","comment":"tét goodvipe 2","rating":"3","user_id":"79","product_id":"2","created_at":"2023-11-27 12:10:58","updated_at":"2023-11-27 12:10:58"},
+{"id":"3","name":"duc vo","comment":"tét gôdvipe 3","rating":"4","user_id":"79","product_id":"2","created_at":"2023-11-27 12:11:21","updated_at":"2023-11-27 12:11:21"},
+{"id":"4","name":"duc vo","comment":"tét 4 gôdvipe","rating":"2","user_id":"79","product_id":"2","created_at":"2023-11-27 12:12:16","updated_at":"2023-11-27 12:12:16"},
+{"id":"5","name":"duc vo","comment":"tét 5 gôdvipe","rating":"3","user_id":"79","product_id":"2","created_at":"2023-11-27 12:28:46","updated_at":"2023-11-27 12:28:46"},
+{"id":"6","name":"duc vo","comment":"test long shirt","rating":"3","user_id":"79","product_id":"1","created_at":"2023-11-27 12:35:36","updated_at":"2023-11-27 12:35:36"},
+{"id":"7","name":"user","comment":"test goodvip6","rating":"5","user_id":"2","product_id":"2","created_at":"2023-11-28 07:02:46","updated_at":"2023-11-28 07:02:46"},
+{"id":"8","name":"user","comment":"testgoodvipe 7","rating":"1","user_id":"2","product_id":"2","created_at":"2023-11-28 07:56:46","updated_at":"2023-11-28 07:56:46"},
+{"id":"9","name":"user","comment":"test 8 goodvipe","rating":"5","user_id":"2","product_id":"2","created_at":"2023-11-28 07:57:37","updated_at":"2023-11-28 07:57:37"},
+{"id":"10","name":"user","comment":"test 9 goodvipe","rating":"1","user_id":"2","product_id":"2","created_at":"2023-11-28 08:10:45","updated_at":"2023-11-28 08:10:45"},
+{"id":"11","name":"user","comment":"sản phẩm như bùi","rating":"5","user_id":"2","product_id":"2","created_at":"2023-11-28 08:31:50","updated_at":"2023-11-28 08:31:50"},
+{"id":"12","name":"duc vo","comment":"ves ri guts","rating":"5","user_id":"79","product_id":"2","created_at":"2023-11-29 03:35:23","updated_at":"2023-11-29 03:35:23"},
+{"id":"13","name":"user","comment":"test 10 goodvipe","rating":"3","user_id":"2","product_id":"2","created_at":"2023-11-29 05:07:56","updated_at":"2023-11-29 05:07:56"},
+{"id":"14","name":"user","comment":"test phone 15","rating":"5","user_id":"2","product_id":"7","created_at":"2023-11-29 07:52:44","updated_at":"2023-11-29 07:52:44"},
+{"id":"15","name":"duc vo","comment":"test","rating":"3","user_id":"79","product_id":"2","created_at":"2024-01-01 01:51:34","updated_at":"2024-01-01 01:51:34"}
+]
+}
+,{"type":"table","name":"failed_jobs","database":"ecommercepro","data":
+[
+
+]
+}
+,{"type":"table","name":"migrations","database":"ecommercepro","data":
+[
+{"id":"1","migration":"2014_10_12_000000_create_users_table","batch":"1"},
+{"id":"2","migration":"2014_10_12_100000_create_password_reset_tokens_table","batch":"1"},
+{"id":"3","migration":"2014_10_12_200000_add_two_factor_columns_to_users_table","batch":"1"},
+{"id":"4","migration":"2019_08_19_000000_create_failed_jobs_table","batch":"1"},
+{"id":"5","migration":"2019_12_14_000001_create_personal_access_tokens_table","batch":"1"},
+{"id":"6","migration":"2023_09_30_025411_create_sessions_table","batch":"1"},
+{"id":"7","migration":"2023_10_02_082707_create_categories_table","batch":"1"},
+{"id":"8","migration":"2023_10_02_122427_create_products_table","batch":"1"},
+{"id":"9","migration":"2023_10_09_094833_create_carts_table","batch":"1"},
+{"id":"10","migration":"2023_10_10_082058_create_orders_table","batch":"1"},
+{"id":"11","migration":"2023_11_15_035718_create_notifications_table","batch":"2"},
+{"id":"12","migration":"2023_11_22_120613_create_comments_table","batch":"2"},
+{"id":"13","migration":"2023_11_22_120623_create_replies_table","batch":"2"},
+{"id":"14","migration":"2023_11_22_140116_create_replies_table","batch":"3"},
+{"id":"15","migration":"2023_11_22_140145_create_comments_table","batch":"3"}
+]
+}
+,{"type":"table","name":"notifications","database":"ecommercepro","data":
+[
+
+]
+}
+,{"type":"table","name":"orders","database":"ecommercepro","data":
+[
+{"id":"1","created_at":"2023-11-04 14:35:13","updated_at":"2023-11-04 14:35:13","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"2","created_at":"2023-11-04 14:35:33","updated_at":"2023-11-04 14:35:33","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Dell XPS 15 9520","quantity":"1","price":"2799","image":"1697951806.png","product_id":"6","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"3","created_at":"2023-11-04 14:35:33","updated_at":"2023-11-04 14:35:33","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Apple macbook air 13 m1","quantity":"2","price":"1898","image":"1697951782.png","product_id":"5","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"4","created_at":"2023-11-04 14:39:18","updated_at":"2023-11-04 14:39:18","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Apple macbook air 13 m1","quantity":"1","price":"949","image":"1697951782.png","product_id":"5","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"5","created_at":"2023-11-20 14:07:54","updated_at":"2024-01-05 04:04:26","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"You canceled the order"},
+{"id":"6","created_at":"2023-11-20 15:13:17","updated_at":"2023-11-23 08:17:54","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Long sleeve white shirt","quantity":"1","price":"25","image":"1697951656.png","product_id":"1","payment_status":"Paid","delivery_status":"delivered"},
+{"id":"7","created_at":"2023-11-20 15:13:17","updated_at":"2023-11-20 15:13:17","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"8","created_at":"2023-11-20 15:16:04","updated_at":"2023-11-20 15:16:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"9","created_at":"2023-11-20 15:21:32","updated_at":"2023-11-20 15:21:32","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"10","created_at":"2023-11-20 15:21:48","updated_at":"2023-11-20 15:21:48","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"11","created_at":"2023-11-20 15:26:04","updated_at":"2023-11-21 05:54:44","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Apple macbook air 13 m1","quantity":"1","price":"949","image":"1697951782.png","product_id":"5","payment_status":"cash on delivery","delivery_status":"You canceled the order"},
+{"id":"12","created_at":"2023-11-20 15:27:28","updated_at":"2023-11-20 15:27:28","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Lenovo Legion Slim 5(2023)","quantity":"1","price":"1029","image":"1697951752.png","product_id":"4","payment_status":"cash on delivery","delivery_status":"delivered"},
+{"id":"13","created_at":"2023-11-21 06:47:43","updated_at":"2023-11-21 06:47:43","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"14","created_at":"2023-11-21 06:48:32","updated_at":"2023-11-21 06:48:32","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"15","created_at":"2023-11-21 06:49:31","updated_at":"2023-11-21 06:49:31","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Apple macbook air 13 m1","quantity":"2","price":"1898","image":"1697951782.png","product_id":"5","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"16","created_at":"2023-11-21 06:49:31","updated_at":"2023-11-21 06:49:31","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"17","created_at":"2023-11-21 06:50:15","updated_at":"2023-11-21 06:50:15","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Long sleeve white shirt","quantity":"1","price":"25","image":"1697951656.png","product_id":"1","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"18","created_at":"2023-11-21 06:50:15","updated_at":"2023-11-21 06:50:15","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Lenovo Legion Slim 5(2023)","quantity":"2","price":"2058","image":"1697951752.png","product_id":"4","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"19","created_at":"2023-11-27 12:50:45","updated_at":"2023-11-27 12:50:45","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"20","created_at":"2023-11-27 12:51:58","updated_at":"2023-11-27 12:51:58","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"21","created_at":"2023-11-29 03:44:00","updated_at":"2023-11-29 03:44:00","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"22","created_at":"2023-11-29 03:44:00","updated_at":"2023-11-29 03:44:00","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"23","created_at":"2023-11-29 03:44:00","updated_at":"2023-11-29 03:44:00","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"24","created_at":"2023-11-29 07:53:26","updated_at":"2023-11-29 07:53:26","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"That Time I Got Reincarnated as a Slime vol.1","quantity":"1","price":"5","image":"1697951986.png","product_id":"13","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"25","created_at":"2023-11-29 10:02:04","updated_at":"2023-11-29 10:02:04","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Lenovo Legion Slim 5(2023)","quantity":"1","price":"1029","image":"1697951752.png","product_id":"4","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"26","created_at":"2023-11-29 10:02:04","updated_at":"2023-11-29 10:02:04","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"27","created_at":"2023-11-29 10:02:04","updated_at":"2023-11-29 10:02:04","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"28","created_at":"2023-11-29 10:02:04","updated_at":"2023-11-29 10:02:04","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Lenovo Legion Slim 5(2023)","quantity":"1","price":"1029","image":"1697951752.png","product_id":"4","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"29","created_at":"2023-11-29 10:02:04","updated_at":"2023-11-29 10:02:04","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"30","created_at":"2023-11-29 10:02:04","updated_at":"2023-11-29 10:02:04","name":"user","email":"user@gmail.com","phone":"0944480204","address":"44street","user_id":"2","product_title":"Apple iphone 15 pro 128GB","quantity":"2","price":"2100","image":"1697951837.png","product_id":"7","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"31","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"32","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Apple iphone 15 pro 128GB","quantity":"1","price":"1050","image":"1697951837.png","product_id":"7","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"33","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Samsung Galaxy S23 5G 128GB","quantity":"1","price":"559","image":"1697951878.png","product_id":"8","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"34","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Bocchi shirt","quantity":"1","price":"35","image":"1701160952.png","product_id":"16","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"35","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"36","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"37","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Good vibes only shirt","quantity":"1","price":"15","image":"1697951691.png","product_id":"2","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"38","created_at":"2023-11-29 10:51:04","updated_at":"2023-11-29 10:51:04","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"39","created_at":"2023-11-29 10:55:45","updated_at":"2023-11-29 10:55:45","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Bocchi shirt","quantity":"1","price":"35","image":"1701160952.png","product_id":"16","payment_status":"cash on delivery","delivery_status":"processing"},
+{"id":"40","created_at":"2023-11-29 10:55:45","updated_at":"2024-01-02 01:35:53","name":"duc vo","email":"vohongduc000@gmail.com","phone":"123","address":"1231","user_id":"79","product_title":"Apple iphone 15 pro 128GB","quantity":"10","price":"10500","image":"1697951837.png","product_id":"7","payment_status":"Paid","delivery_status":"delivered"},
+{"id":"41","created_at":"2023-12-05 07:09:10","updated_at":"2023-12-05 07:16:49","name":"duc vo","email":"vohongduc000@gmail.com","phone":"0911118111","address":"San Francisco, CA","user_id":"79","product_title":"Exercise for Java Programming (include answers)","quantity":"1","price":"0","image":"1697952047.png","product_id":"15","payment_status":"Paid","delivery_status":"delivered"},
+{"id":"42","created_at":"2024-01-02 01:34:25","updated_at":"2024-01-02 01:34:25","name":"duc vo","email":"vohongduc000@gmail.com","phone":"0911118111","address":"San Francisco, CA","user_id":"79","product_title":"Freedom shirt","quantity":"1","price":"56","image":"1697951726.png","product_id":"3","payment_status":"cash on delivery","delivery_status":"processing"}
+]
+}
+,{"type":"table","name":"password_reset_tokens","database":"ecommercepro","data":
+[
+
+]
+}
+,{"type":"table","name":"personal_access_tokens","database":"ecommercepro","data":
+[
+
+]
+}
+,{"type":"table","name":"products","database":"ecommercepro","data":
+[
+{"id":"1","title":"Cà phê đen (pha máy)","description":"Cà phê hạt (hoặc cà phê bột): Arabica, Robusta, hoặc hỗn hợp. Nước lọc. Đường trắng.","image":"1723955546.jpg","category":"Cà phê","quantity":"0","price":"14","discount_price":null,"created_at":"2023-10-22 05:14:16","updated_at":"2024-08-18 04:34:39"},
+{"id":"2","title":"Cà phê sữa(pha máy)","description":"Cà phê hạt (hoặc cà phê bột): Arabica, Robusta, hoặc hỗn hợp. Nước lọc. Đường trắng. Sữa tươi","image":"1723955800.jpg","category":"Cà phê","quantity":"0","price":"14","discount_price":null,"created_at":"2023-10-22 05:14:51","updated_at":"2024-08-18 04:37:02"},
+{"id":"3","title":"Freedom shirt","description":"For trumpcons","image":"1697951726.png","category":"shirt","quantity":"44","price":"100","discount_price":"56","created_at":"2023-10-22 05:15:26","updated_at":"2024-01-02 01:34:25"},
+{"id":"4","title":"Lenovo Legion Slim 5(2023)","description":"Ryzen 5 7640HS – RTX 4060","image":"1697951752.png","category":"laptop","quantity":"196","price":"1349","discount_price":"1029","created_at":"2023-10-22 05:15:52","updated_at":"2023-11-29 10:02:04"},
+{"id":"5","title":"Apple macbook air 13 m1","description":"Apple m1 – 8GB ram","image":"1697951782.png","category":"laptop","quantity":"148","price":"999","discount_price":"949","created_at":"2023-10-22 05:16:22","updated_at":"2023-11-21 06:49:31"},
+{"id":"6","title":"Dell XPS 15 9520","description":"i9 12900k – RTX 3050ti","image":"1697951806.png","category":"laptop","quantity":"50","price":"2999","discount_price":"2799","created_at":"2023-10-22 05:16:47","updated_at":"2023-10-22 05:16:47"},
+{"id":"7","title":"Apple iphone 15 pro 128GB","description":"A17 Pro Bionic – 8GB ram","image":"1697951837.png","category":"shirt","quantity":"35","price":"1100","discount_price":"1050","created_at":"2023-10-22 05:17:17","updated_at":"2024-01-01 02:29:38"},
+{"id":"8","title":"Samsung Galaxy S23 5G 128GB","description":"Snapdragon 8 Gen 2 – 8GB ram","image":"1697951878.png","category":"mobile","quantity":"299","price":"599","discount_price":"559","created_at":"2023-10-22 05:17:58","updated_at":"2023-11-29 10:51:04"},
+{"id":"9","title":"Asus Zenfone 10","description":"Snapdragon 8 Gen 2 – 8GB ram","image":"1697951907.png","category":"mobile","quantity":"200","price":"699","discount_price":null,"created_at":"2023-10-22 05:18:27","updated_at":"2023-10-22 05:18:27"},
+{"id":"10","title":"Puma Cotton Bag","description":"Cotton Bag for College","image":"1697951927.png","category":"bag","quantity":"70","price":"6","discount_price":null,"created_at":"2023-10-22 05:18:47","updated_at":"2023-10-22 05:18:47"},
+{"id":"11","title":"Mafia Deep Blue Bag","description":"Lightweight bag for Hikers","image":"1697951947.png","category":"bag","quantity":"30","price":"10","discount_price":"9","created_at":"2023-10-22 05:19:07","updated_at":"2023-10-22 05:19:07"},
+{"id":"12","title":"Japanese Randoseru School Bag","description":"Traditional Japanese School Bags","image":"1697951968.png","category":"bag","quantity":"90","price":"100","discount_price":"89","created_at":"2023-10-22 05:19:28","updated_at":"2023-10-22 05:19:28"},
+{"id":"13","title":"That Time I Got Reincarnated as a Slime vol.1","description":"A Fictional story written by Fuse","image":"1697951986.png","category":"book","quantity":"59","price":"5","discount_price":null,"created_at":"2023-10-22 05:19:46","updated_at":"2023-11-29 07:53:26"},
+{"id":"14","title":"The Book of Five Rings","description":"Authored by the renowned historical figures Miyamoto Mushashi. The Book of Five Rings offers profound insights into the art of confrontation, victory, and leadership.","image":"1697952012.png","category":"book","quantity":"60","price":"5","discount_price":null,"created_at":"2023-10-22 05:20:12","updated_at":"2023-10-22 05:20:12"},
+{"id":"15","title":"Exercise for Java Programming (include answers)","description":"“For the student who wants to make VKU a high-class university of the Central Region.” – Huynh Cong Phap","image":"1697952047.png","category":"book","quantity":"999","price":"0","discount_price":null,"created_at":"2023-10-22 05:20:47","updated_at":"2023-12-05 07:09:10"},
+{"id":"16","title":"Bocchi shirt","description":"The first public illustration by Aki Hamaji shines! A full-color T-shirt by Hitori Goto, also known as \"Bocchi-chan\"","image":"1701160952.png","category":"shirt","quantity":"98","price":"36","discount_price":"35","created_at":"2023-11-28 08:42:32","updated_at":"2023-11-29 10:55:45"}
+]
+}
+,{"type":"table","name":"replies","database":"ecommercepro","data":
+[
+{"id":"2","name":"duc vo","comment_id":null,"reply":"test reply","user_id":"79","product_id":"2","created_at":"2023-11-22 15:22:59","updated_at":"2023-11-22 15:22:59"},
+{"id":"3","name":"duc vo","comment_id":"2","reply":"test reply 2nd","user_id":"79","product_id":"2","created_at":"2023-11-22 15:24:51","updated_at":"2023-11-22 15:24:51"},
+{"id":"4","name":"duc vo","comment_id":"1","reply":"test reply first test","user_id":"79","product_id":"2","created_at":"2023-11-22 15:25:24","updated_at":"2023-11-22 15:25:24"},
+{"id":"5","name":"duc vo","comment_id":"3","reply":"test reply freedom","user_id":"79","product_id":"3","created_at":"2023-11-22 15:25:54","updated_at":"2023-11-22 15:25:54"},
+{"id":"6","name":"duc vo","comment_id":"3","reply":"test reply 2nd","user_id":"79","product_id":"3","created_at":"2023-11-22 15:30:38","updated_at":"2023-11-22 15:30:38"},
+{"id":"7","name":"user","comment_id":"2","reply":"test user 2nd test comment","user_id":"2","product_id":"2","created_at":"2023-11-22 15:39:24","updated_at":"2023-11-22 15:39:24"},
+{"id":"8","name":"duc vo","comment_id":"1","reply":"tét tét","user_id":"79","product_id":"2","created_at":"2023-11-23 09:42:35","updated_at":"2023-11-23 09:42:35"}
+]
+}
+,{"type":"table","name":"sessions","database":"ecommercepro","data":
+[
+{"id":"wfK23dGmthOV7f7e18E5xJStsTw6nPa04fN4ebdk","user_id":null,"ip_address":"127.0.0.1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/127.0.0.0 Safari\/537.36 Edg\/127.0.0.0","payload":"YTozOntzOjY6Il90b2tlbiI7czo0MDoiaDVIb1RTZVFPWmJZWllKZVc2TUZ1UU00Tll2ZmFHWW41VW1IZ2RwSSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9zaG93X3Byb2R1Y3QiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19","last_activity":"1723955822"}
+]
+}
+,{"type":"table","name":"users","database":"ecommercepro","data":
+[
+{"id":"1","name":"admin","usertype":"1","phone":"0934034949","address":"admin@gmail.com","birthday":"","email":"admin@gmail.com","email_verified_at":"2023-11-01 12:31:25","password":"$2y$10$iXpQiSsdL\/J.EDbEMERsiOav.ISTFbbCgG6R52e\/TMXtnYSAMWFWO","two_factor_secret":null,"two_factor_recovery_codes":null,"two_factor_confirmed_at":null,"remember_token":null,"current_team_id":null,"profile_photo_path":null,"created_at":"2023-10-15 01:16:27","updated_at":"2023-10-15 01:16:27"},
+{"id":"79","name":"duc vo","usertype":"0","phone":"0911118111","address":"San Francisco, CA","birthday":"2004-01-05","email":"vohongduc000@gmail.com","email_verified_at":"2023-11-16 03:34:54","password":"$2y$10$\/4ZfcY9G9lDSU1TucDw.nulWuN9.F\/7Sd\/cuLkH51Wpv7YAQCZ1fG","two_factor_secret":null,"two_factor_recovery_codes":null,"two_factor_confirmed_at":null,"remember_token":null,"current_team_id":null,"profile_photo_path":"79.gif","created_at":"2023-11-16 03:30:47","updated_at":"2024-01-01 01:50:58"},
+{"id":"82","name":"admin","usertype":"1","phone":"123123","address":"16 tho nhi ki","birthday":null,"email":"admin1@gmail.com","email_verified_at":"2024-07-17 05:42:18","password":"$2y$10$BMwTKJFO.YA6T7fBxFy5oeLTATNyUmmQin331L3jlWzFstQUSA43m","two_factor_secret":null,"two_factor_recovery_codes":null,"two_factor_confirmed_at":null,"remember_token":null,"current_team_id":null,"profile_photo_path":null,"created_at":"2024-07-17 05:39:30","updated_at":"2024-07-17 05:42:18"}
+]
+}
+]
