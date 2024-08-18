@@ -32,7 +32,7 @@
                         {{-- fix UI --}}
                      </div>
                   </div>
-                  <img  src="product/{{$products->image}}" class="card-img-top" alt="...">
+                  <img  src="product/{{$products->image}}" class="card-img-top" style="height: 300px" alt="...">
                   <div class="card-body card-home">
                     <h5 class="card-title">{{$products->title}}</h5>
                     <p class="card-text">{{$products->description}}</p>
@@ -45,14 +45,14 @@
                     @endif
                     @if($products->discount_price !=null)
                     <h5 style="text-decoration: line-through; opacity:0.5">
-                       {{$products->price}}$
+                       {{$products->price}}VND
                     </h5>
                     <h5 class="card-text pl-2">
-                       {{$products->discount_price}}$
+                       {{$products->discount_price}}VND
                     </h5>
                     @else
                     <h5>
-                       {{$products->price}}$
+                       {{$products->price}}VND
                     </h5>
                   @endif
   

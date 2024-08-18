@@ -41,7 +41,7 @@
                 </div>
                 @endif
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="product/{{$product->image}}"
+                    <div class="col-md-6"><img  class="card-img-top mb-5 mb-md-0" src="product/{{$product->image}}"
                             alt="..." /></div>
                     <div class="col-md-6">
                         <div class="small mb-1">{{$product->category}} : {{$product->id}}</div>
@@ -91,7 +91,7 @@
                     <div class="slide card h-100" >
                         <div class="h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="product/{{$relateproduct->image}}" alt="..." />
+                            <img class="card-img-top" style="height: 300px" src="product/{{$relateproduct->image}}" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -101,10 +101,10 @@
                                     @if($relateproduct->discount_price !=null)
                                     <span>Price: </span>
                                     <span class="text-decoration-line-through">${{$relateproduct->price}}</span> -
-                                    <span>${{$relateproduct->discount_price}}</span>
+                                    <span>{{$relateproduct->discount_price}}VND</span>
                                     @else
                                     <span>Price: </span>
-                                    <span>${{$relateproduct->price}}</span>
+                                    <span>{{$relateproduct->price}}VND</span>
                                     @endif
                                 </div>
                             </div>

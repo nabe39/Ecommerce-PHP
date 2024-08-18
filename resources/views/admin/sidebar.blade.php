@@ -11,17 +11,17 @@ $user = session('user');
         <div class="profile-desc">
           <div class="profile-pic">
             <div class="count-indicator">
-              @if($user->profile_photo_path == null)
+              {{-- @if($user->profile_photo_path == null)
               <img class="img-xs rounded-circle" src="profilePhoto/avatar-trang-4.jpg"
                   alt="">
               @else
               <img class="img-xs rounded-circle"
               src="profilePhoto/{{$user->profile_photo_path}}" alt="">
-              @endif
+              @endif --}}
               <span class="count bg-success"></span>
             </div>
             <div class="profile-name">
-              <h5 class="mb-0 font-weight-normal ">{{$user->name}}</h5>
+              <h5 class="mb-0 font-weight-normal ">{{$user->name?? "admin"}}</h5>
             </div>
           </div>
           <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>

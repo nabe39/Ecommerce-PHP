@@ -23,7 +23,7 @@
 
     </div>
     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-        <h6 class="text-black -3">${{$cart->price}}</h6>
+        <h6 class="text-black -3">{{$cart->price}}VND</h6>
     </div>
     <div class="col-md-1 col-lg-1 col-xl-1 text-end">
 
